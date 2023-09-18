@@ -1,0 +1,327 @@
+#!/usr/bin/env python
+
+import RPi.GPIO as GPIO
+from RPi.GPIO import output
+#import subprocess
+#import time
+from time import sleep
+#import os
+import sys
+from os import system
+
+# Set the GPIO pin numbering mode to BCM (Broadcom SOC Channel)
+GPIO.setmode(GPIO.BCM)
+# Disable GPIO warnings (suppress warnings about GPIO pin usage)
+GPIO.setwarnings(False)
+# Configure GPIO pin as input with a pull-up resistor enabled
+GPIO.setup(13, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(12, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
+# Initialize the 'transmit' variable as False
+transmit = False
+
+# Check if the input state of GPIO pin 12 is False (low)
+if GPIO.input(12) == False:
+    # If GPIO pin 12 is low, set the transmit mode to True
+    print("Version is v1 with UHF BPF")
+    transmit = True
+
+    # Set up LED-related variables
+    txLed = 27       # GPIO pin number for the LED
+    txLedOn = 1      # Value to turn the LED on
+    txLedOff = 0     # Value to turn the LED off
+
+# Check if the input state of GPIO pin 27 is False (low)
+if GPIO.input(27) == False:
+    # If GPIO pin 27 is low, set the transmit mode to True
+    print("Version is TFB")
+    transmit = True
+
+    # Set up LED-related variables
+    txLed = 22       # GPIO pin number for the LED
+    txLedOn = 0      # Value to turn the LED on
+    txLedOff = 1     # Value to turn the LED off
+
+# Check if the input state of GPIO pin 13 is False (low)
+elif GPIO.input(13) == False:
+    print("Version is v1 with VHF BPF")
+    print("VHF transmit not implemented yet")  # A comment indicating that VHF transmit isn't implemented (transmit variable remains False)
+
+    # Set up LED-related variables
+    txLed = 27       # GPIO pin number for the LED
+    txLedOn = 1      # Value to turn the LED on
+    txLedOff = 0     # Value to turn the LED off
+
+# If none of the previous conditions are met, this part of the code executes.
+else:
+    # Print a message indicating that there's no Band Pass Filter (BPF).
+    print("No BPF")
+    
+    # Assign values to LED-related variables
+    txLed = 27      # GPIO pin number for the LED
+    txLedOn = 1     # Value to turn the LED on
+    txLedOff = 0    # Value to turn the LED off
+
+GPIO.setup(txLed, GPIO.OUT)
+output(txLed, txLedOff)
+print(txLed)
+
+
+debug_mode = 0
+
+# Check if the script is being executed as the main program
+if __name__ == "__main__":
+    # Check if command-line arguments are provided
+    if len(sys.argv) > 1:
+        # Check if the debug flag ("-d" or "d") is passed as an argument, set 'debug_mode' to 1 if true
+        if ('d' == sys.argv[1]) or ('-d' in sys.argv[1]):
+            debug_mode = 1
+    
+    # Print the value of 'transmit' (determined earlier in the code)
+    print(transmit)
+
+    # Try to open and read the '.mode' file located at "/home/pi/CubeSatSim/"
+    try:
+        file = open("/home/pi/CubeSatSim/.mode")
+        mode = file.read(1)
+    except:
+        # If an error occurs, set 'mode' to "f" and print an error message (if in debug mode)
+        mode = "f"
+        if debug_mode == 1:
+            print("Can't open .mode file, defaulting to FSK")
+    print("Mode is: ")
+	print(mode)
+
+    # Try to open and read the 'sim.cfg' file located at "/home/pi/CubeSatSim/"
+    try:
+        file = open("/home/pi/CubeSatSim/sim.cfg")
+        callsign = file.readline().split(" ")[0]
+    except:
+        # If an error occurs, set 'callsign' to "AMSAT" and print an error message (if in debug mode)
+        callsign = "AMSAT"
+        if debug_mode == 1:
+            print("Can't read callsign from sim.cfg file, defaulting to AMSAT")
+	print(callsign)
+
+	sleep(1)
+	output(txLed, txLedOn)
+   
+	if (debug_mode == 1):
+        # Generate a Morse code message 'hi hi de [callsign]' and write it to 'id.txt'
+        # Then, create a sound file with the Morse code message and process it with signal filters
+        # Finally, transmit the signal using 'rpitx'
+		system("echo 'hi hi de " + callsign + "' > id.txt && gen_packets -M 20 /home/pi/CubeSatSim/id.txt -o /home/pi/CubeSatSim/morse.wav -r 48000 > /dev/null 2>&1 && cat /home/pi/CubeSatSim/morse.wav | csdr convert_i16_f | csdr gain_ff 7000 | csdr convert_f_samplerf 20833 | sudo /home/pi/rpitx/rpitx -i- -m RF -f 434.9e3")
+	else:
+        # Generate a Morse code message 'hi hi de [callsign]' and write it to 'id.txt'
+        # Then, create a sound file with the Morse code message and process it with signal filters
+        # Finally, transmit the signal using 'rpitx'
+		system("echo 'hi hi de " + callsign + "' > id.txt && gen_packets -M 20 /home/pi/CubeSatSim/id.txt -o /home/pi/CubeSatSim/morse.wav -r 48000 > /dev/null 2>&1 && cat /home/pi/CubeSatSim/morse.wav | csdr convert_i16_f | csdr gain_ff 7000 | csdr convert_f_samplerf 20833 | sudo /home/pi/rpitx/rpitx -i- -m RF -f 434.9e3 > /dev/null 2>&1")
+		
+	sleep(4); # was 8
+	output(txLed, txLedOff)
+
+	sleep(1)
+
+#===========================================Le début de la transmition RPITX ==============================================
+
+	if (transmit):
+	
+#		print 'Length: ', len(sys.argv)
+    
+#		if (len(sys.argv)) > 1:
+#        		print("There are arguments!")
+
+        # Check if 'mode' is set to 'a' (AFSK mode)
+		if (mode == 'a'):
+			print("AFSK")
+			sleep(5)
+            # Try to open a file named 't.txt' in the specified path
+			try:
+				file = open("/home/pi/CubeSatSim/t.txt")
+				file.close()
+			except:
+                # If 't.txt' doesn't exist, create it and write a default message
+				system("echo '" + callsign + "-11>APCSS:hi hi 100 199 199 199 298 299 299 278 380 350 300 300 439 400 400 400 500 500 500 500 600 600 600 650' > /home/pi/CubeSatSim/t.txt && echo 'AMSAT>APCSS:010101/hi hi ' >> /home/pi/CubeSatSim/t.txt")
+			# Repeat the following block of code 5 times
+            for x in range(5):
+				output(txLed, txLedOn)
+				if (debug_mode == 1):
+                    # Generate telemetry data, convert it to audio, apply signal processing, and transmit it using 'rpitx'
+					system("gen_packets -o /home/pi/CubeSatSim/telem.wav /home/pi/CubeSatSim/t.txt -r 48000 > /dev/null 2>&1 && cat /home/pi/CubeSatSim/telem.wav | csdr convert_i16_f | csdr gain_ff 7000 | csdr convert_f_samplerf 20833 | sudo /home/pi/rpitx/rpitx -i- -m RF -f 434.9e3")
+				else:
+                    # Generate telemetry data, convert it to audio, apply signal processing, and transmit it using 'rpitx'
+					system("gen_packets -o /home/pi/CubeSatSim/telem.wav /home/pi/CubeSatSim/t.txt -r 48000 > /dev/null 2>&1 && cat /home/pi/CubeSatSim/telem.wav | csdr convert_i16_f | csdr gain_ff 7000 | csdr convert_f_samplerf 20833 | sudo /home/pi/rpitx/rpitx -i- -m RF -f 434.9e3 > /dev/null 2>&1")					
+				sleep(0.2)
+				output(txLed, txLedOff)
+				sleep(3.8)
+			while True:
+				try:
+                    # Try to open a file named 'ready' in the specified path
+					f = open("/home/pi/CubeSatSim/ready")
+					output(txLed, txLedOn)
+					if (debug_mode == 1):
+                    # Generate telemetry data, convert it to audio, apply signal processing, and transmit it using 'rpitx'
+						system("gen_packets -o /home/pi/CubeSatSim/telem.wav /home/pi/CubeSatSim/t.txt -r 48000 > /dev/null 2>&1 && cat /home/pi/CubeSatSim/telem.wav | csdr convert_i16_f | csdr gain_ff 7000 | csdr convert_f_samplerf 20833 | sudo /home/pi/rpitx/rpitx -i- -m RF -f 434.9e3")
+					else:
+                        # Generate telemetry data, convert it to audio, apply signal processing, and transmit it using 'rpitx'
+						system("gen_packets -o /home/pi/CubeSatSim/telem.wav /home/pi/CubeSatSim/t.txt -r 48000 > /dev/null 2>&1 && cat /home/pi/CubeSatSim/telem.wav | csdr convert_i16_f | csdr gain_ff 7000 | csdr convert_f_samplerf 20833 | sudo /home/pi/rpitx/rpitx -i- -m RF -f 434.9e3 > /dev/null 2>&1")
+					output(txLed, txLedOff)
+                    # Close the 'ready' file and remove it
+					f.close()
+					system("sudo rm /home/pi/CubeSatSim/ready")
+					sleep(0.5)
+				except:		  
+					sleep(0.5)
+                    
+        # Check if 'mode' is set to 'm' (CW mode)           
+		elif (mode == 'm'):
+			print("CW")
+#			sleep(4)
+
+			try:
+                # Try to open a file named 'cw.txt' in the specified path
+				file = open("/home/pi/CubeSatSim/cw.txt")
+				file.close()
+			except:
+                # If 'cw.txt' doesn't exist, create it and write a default message
+				system("echo 'hi hi 100 199 199 199 298 299 299 278 380 350 300 300 439 400 400 400 500 500 500 500 600 600 600 650' > /home/pi/CubeSatSim/cw.txt")
+			output(txLed, txLedOn)
+            
+			if (debug_mode == 1):
+                # Generate CW audio, apply signal processing, and transmit it using 'rpitx'
+				system("gen_packets -M 20 -o /home/pi/CubeSatSim/morse.wav /home/pi/CubeSatSim/cw.txt -r 48000 > /dev/null 2>&1 && cat /home/pi/CubeSatSim/morse.wav | csdr convert_i16_f | csdr gain_ff 7000 | csdr convert_f_samplerf 20833 | sudo /home/pi/rpitx/rpitx -i- -m RF -f 434.9e3")
+			else:
+                # Generate CW audio, apply signal processing, and transmit it using 'rpitx'
+				system("gen_packets -M 20 -o /home/pi/CubeSatSim/morse.wav /home/pi/CubeSatSim/cw.txt -r 48000 > /dev/null 2>&1 && cat /home/pi/CubeSatSim/morse.wav | csdr convert_i16_f | csdr gain_ff 7000 | csdr convert_f_samplerf 20833 | sudo /home/pi/rpitx/rpitx -i- -m RF -f 434.9e3 > /dev/null 2>&1")
+			output(txLed, txLedOff)
+
+            # Continue to execute the following code indefinitely
+			while True:
+				try:
+                    # Try to open a file named 'cwready' in the specified path
+					f = open("/home/pi/CubeSatSim/cwready")
+					output(txLed, txLedOn)
+					if (debug_mode == 1):
+                        # Generate CW audio, apply signal processing, and transmit it using 'rpitx'
+						system("gen_packets -M 20 -o /home/pi/CubeSatSim/morse.wav /home/pi/CubeSatSim/cw.txt -r 48000 > /dev/null 2>&1 && cat /home/pi/CubeSatSim/morse.wav | csdr convert_i16_f | csdr gain_ff 7000 | csdr convert_f_samplerf 20833 | sudo /home/pi/rpitx/rpitx -i- -m RF -f 434.9e3")
+					else:
+                        # Generate CW audio, apply signal processing, and transmit it using 'rpitx'
+						system("gen_packets -M 20 -o /home/pi/CubeSatSim/morse.wav /home/pi/CubeSatSim/cw.txt -r 48000 > /dev/null 2>&1 && cat /home/pi/CubeSatSim/morse.wav | csdr convert_i16_f | csdr gain_ff 7000 | csdr convert_f_samplerf 20833 | sudo /home/pi/rpitx/rpitx -i- -m RF -f 434.9e3 > /dev/null 2>&1")
+					output(txLed, txLedOff)
+					f.close()
+					system("sudo rm /home/pi/CubeSatSim/cwready")
+					sleep(1)
+				except:		  
+					sleep(1)
+		elif (mode == 's'):
+			print("SSTV")
+			try: 
+				from picamera import PiCamera
+#					from pysstv.sstv import SSTV
+				camera = PiCamera()
+				print("Camera present")
+				camera_present = 1
+				camera.close()
+			except:
+				print("No camera available")
+				print(" -> if camera plugged in, is software enabled?")
+				camera_present = 0
+
+#				while 1:
+			output(txLed, txLedOff)
+			if (camera_present == 1):
+				try:
+					file = open("/home/pi/CubeSatSim/sstv_image_2_320_x_256.jpg")
+					print("First SSTV stored image detected")
+					system("/home/pi/PiSSTVpp/pisstvpp -r 48000 -p s2 /home/pi/CubeSatSim/sstv_image_2_320_x_256.jpg") 
+					print ("Sending SSTV image")
+					output(txLed, txLedOn)
+					if (debug_mode == 1):
+						system("cat /home/pi/CubeSatSim/sstv_image_2_320_x_256.jpg.wav | csdr convert_i16_f | csdr gain_ff 14000 | csdr convert_f_samplerf 20833 | sudo rpitx -i- -m RF -f 434.9e3")
+					else:
+						system("cat /home/pi/CubeSatSim/sstv_image_2_320_x_256.jpg.wav | csdr convert_i16_f | csdr gain_ff 14000 | csdr convert_f_samplerf 20833 | sudo rpitx -i- -m RF -f 434.9e3 > /dev/null 2>&1")
+					output(txLed, txLedOff)
+	#					sleep(1)
+				except:
+					print("image 2 did not load - copy from CubeSatSim/sstv directory")
+				while 1:
+					system("raspistill -o /home/pi/CubeSatSim/camera_out.jpg -w 320 -h 256") #  > /dev/null 2>&1")
+					print("Photo taken")
+					system("/home/pi/PiSSTVpp/pisstvpp -r 48000 -p s2 /home/pi/CubeSatSim/camera_out.jpg") 
+					system("sudo rm /home/pi/CubeSatSim/camera_out.jpg > /dev/null 2>&1") 
+					print ("Sending SSTV image")
+					output(txLed, txLedOn)
+					if (debug_mode == 1):
+						system("cat /home/pi/CubeSatSim/camera_out.jpg.wav | csdr convert_i16_f | csdr gain_ff 14000 | csdr convert_f_samplerf 20833 | sudo rpitx -i- -m RF -f 434.9e3")
+					else:
+						system("cat /home/pi/CubeSatSim/camera_out.jpg.wav | csdr convert_i16_f | csdr gain_ff 14000 | csdr convert_f_samplerf 20833 | sudo rpitx -i- -m RF -f 434.9e3 > /dev/null 2>&1")
+					output(txLed, txLedOff)
+					system("sudo rm /home/pi/CubeSatSim/camera_out.jpg.wav > /dev/null 2>&1") 
+					sleep(1)
+			else:
+				try:
+					file = open("/home/pi/CubeSatSim/sstv_image_1_320_x_256.jpg")
+					print("First SSTV stored image detected")
+					system("/home/pi/PiSSTVpp/pisstvpp -r 48000 -p s2 /home/pi/CubeSatSim/sstv_image_1_320_x_256.jpg") 
+					print ("Sending SSTV image")
+					output(txLed, txLedOn)
+					if (debug_mode == 1):
+						system("cat /home/pi/CubeSatSim/sstv_image_1_320_x_256.jpg.wav | csdr convert_i16_f | csdr gain_ff 14000 | csdr convert_f_samplerf 20833 | sudo rpitx -i- -m RF -f 434.9e3")
+					else:
+						system("cat /home/pi/CubeSatSim/sstv_image_1_320_x_256.jpg.wav | csdr convert_i16_f | csdr gain_ff 14000 | csdr convert_f_samplerf 20833 | sudo rpitx -i- -m RF -f 434.9e3 > /dev/null 2>&1")
+					output(txLed, txLedOff)
+					sleep(1)
+				except:
+					print("image 1 did not load - copy from CubeSatSim/sstv directory")
+				try:
+					file = open("/home/pi/CubeSatSim/sstv_image_2_320_x_256.jpg")
+					print("Second SSTV stored image detected")
+					system("/home/pi/PiSSTVpp/pisstvpp -r 48000 -p s2 /home/pi/CubeSatSim/sstv_image_2_320_x_256.jpg")
+					while 1:
+						print ("Sending SSTV image")
+						output(txLed, txLedOn)
+						if (debug_mode == 1):
+							system("cat /home/pi/CubeSatSim/sstv_image_2_320_x_256.jpg.wav | csdr convert_i16_f | csdr gain_ff 14000 | csdr convert_f_samplerf 20833 | sudo rpitx -i- -m RF -f 434.9e3") 
+						else:
+							system("cat /home/pi/CubeSatSim/sstv_image_2_320_x_256.jpg.wav | csdr convert_i16_f | csdr gain_ff 14000 | csdr convert_f_samplerf 20833 | sudo rpitx -i- -m RF -f 434.9e3 > /dev/null 2>&1")
+						output(txLed, txLedOff)
+						sleep(5)
+				except:	
+					print("image 2 did not load - copy from CubeSatSim/sstv directory")
+					system("(while true; do (sleep 5 && cat /home/pi/CubeSatSim/wav/sstv.wav); done) | csdr convert_i16_f | csdr gain_ff 7000 | csdr convert_f_samplerf 20833 | sudo rpitx -i- -m RF -f 434.9e3 &")
+					while 1:
+						output(txLed, txLedOn)
+						sleep(60)
+						output(txLed, txLedOff)
+						sleep(1)
+
+		elif (mode == 'b'):
+			print("BPSK")
+            # Execute a system command to start a netcat server listening on port 8080
+            # The received data is processed through a series of signal processing blocks
+            # and then transmitted using 'rpitx'
+			system("sudo nc -l 8080 | csdr convert_i16_f | csdr fir_interpolate_cc 2 | csdr dsb_fc | csdr bandpass_fir_fft_cc 0.002 0.06 0.01 | csdr fastagc_ff | sudo /home/pi/rpitx/sendiq -i /dev/stdin -s 96000 -f 434.9e6 -t float &")
+			print("Turning LED on/off")
+			while 1:
+				output(txLed, txLedOff)
+				sleep(0.5)
+				output(txLed, txLedOn)
+				sleep(4.0)
+		else:
+			print("FSK") 
+			system("sudo nc -l 8080 | csdr convert_i16_f | csdr gain_ff 7000 | csdr convert_f_samplerf 20833 | sudo /home/pi/rpitx/rpitx -i- -m RF -f 434.9e3 &")
+			print("Turning LED on/off")
+			while 1:
+				output(txLed, txLedOff)
+				sleep(0.5)
+				output(txLed, txLedOn)
+				sleep(4.0)
+#		else:
+#			print("FSK") 
+#			system("sudo nc -l 8080 | csdr convert_i16_f | csdr gain_ff 7000 | csdr convert_f_samplerf 20833 | sudo /home/pi/rpitx/rpitx -i- -m RF -f 434.9e3")
+
+	else:
+		print("No Band Pass Filter so no telemetry transmit.  See http://cubesatsim.org/wiki for instructions on how to build the BPF.")
+		while 1:
+			sleep(5)
