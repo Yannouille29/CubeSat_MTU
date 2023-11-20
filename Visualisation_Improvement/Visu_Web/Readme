@@ -59,3 +59,4 @@ After making any changes to the rasp.py script, follow these commands to update 
         Verify the status of the visualisation service for any errors or issues using "sudo systemctl status visualisation".
 
 These commands ensure that the modifications made in the rasp.py script are reflected and the service is running with the updated changes.
+Everything else is handled automatically by the website (all the .js files)
