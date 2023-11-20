@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Meteor Detection</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Reaction_Wheels.css') }}" />
+  </head>
+  <body>
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+      <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+        <a href="/index" class="w3-bar-item w3-button"
+          ><b>CubeSat</b> Home</a
+        >
+        <!-- Float links to the right. Hide them on small screens -->
+        <div class="w3-right w3-hide-small">
+          <a href="#projects" class="w3-bar-item w3-button">Projects</a>
+          <a href="#about" class="w3-bar-item w3-button">Author</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header
+      class="w3-display-container w3-content w3-wide"
+      style="max-width: 1500px"
+      id="home"
+    >
+      <img
+        class="w3-image"
+        src="{{ url_for('static', filename='IMAGE/meteor3.jpg') }}"
+        alt="Architecture"
+        width="1500"
+        height="800"
+      />
+      <div class="w3-display-middle w3-margin-top w3-center">
+        <h1 class="w3-xxlarge w3-text-white">
+          <span class="w3-padding w3-black w3-opacity-min"><b>METEOR DETECTION</b></span>
+          <span class="w3-hide-small w3-text-light-grey">CUBESAT</span>
+        </h1>
+      </div>
+    </header>
+
+    <!-- Page content -->
+    <div class="w3-content w3-padding" style="max-width: 1564px">
+      <!-- Project Section -->
+      <div class="w3-container w3-padding-32" id="projects">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Images of Project
+        </h3>
+      </div>
+
+      <div class="w3-row-padding">
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-display-container">
+            <div class="w3-display-topleft w3-black w3-padding">
+              Old meteor detection
+            </div>
+
+              <img
+                src="{{ url_for('static', filename='IMAGE/old_meteor.jpg') }}"
+                alt="House"
+                style="width: 100%"
+              />
+
+          </div>
+        </div>
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-display-container">
+            <div class="w3-display-topleft w3-black w3-padding">
+              First prototype
+            </div>
+
+              <img src="{{ url_for('static', filename='IMAGE/proto_meteor.png') }}" alt="House" style="width: 100%" />
+
+          </div>
+        </div>
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-display-container">
+            <div class="w3-display-topleft w3-black w3-padding">
+              Schematique project
+            </div>
+
+              <img
+                src="{{ url_for('static', filename='IMAGE/schem_meteor.jpg') }}"
+                alt="House"
+                style="width: 100%;
+                border-top-width: 1px;
+                border-top-style: solid;
+                border-left-width: 1px;
+                border-left-style: solid;
+                border-bottom-width: 1px;
+                border-bottom-style: solid;
+                border-right-width: 1px;
+                border-right-style: solid;
+                border-block-color: #d2cdcd;
+                border-left-color: #d2cdcd;
+                border-right-color: #d2cdcd;"
+              />
+
+          </div>
+        </div>
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-display-container">
+            <div class="w3-display-topleft w3-black w3-padding">
+              Software detection
+            </div>
+
+              <img src="{{ url_for('static', filename='IMAGE/soft_meteor.jpg') }}" alt="House" style="width: 100%;
+              border-top-width: 1px;
+              border-top-style: solid;
+              border-left-width: 1px;
+              border-left-style: solid;
+              border-bottom-width: 1px;
+              border-bottom-style: solid;
+              border-right-width: 1px;
+              border-right-style: solid;
+              border-block-color: #d2cdcd;
+              border-left-color: #d2cdcd;
+              border-right-color: #d2cdcd;" />
+
+          </div>
+        </div>
+      </div>
+
+      <!-- About Section -->
+      <div class="w3-container w3-padding-32">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Introduction :
+        </h3>
+        <p>
+          A final improvement could be added as part of the CubeSat project. 
+          To help enhance the project, it is the detection of meteor that was chosen. 
+          The goal of this improvement was to detect the meteors with a SDR. 
+          To add his improvement, the first step was to understand the general operation of the meteor detection.
+        </p>
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Understanding the operation of :
+        </h3>
+        <p>
+          The principle is the following one : a transmitter sends out radio waves toward the sky at an altitude of about 100 km. 
+          When a meteor enters the Earth's atmosphere, it begins to burn up briefly creating atmospheric ionized gases. 
+          These atmospheric ionized gases create conditions which are reflective to terrestrial radio waves. 
+          This occurs at an altitude of about 80 to 100 kilometers. The emitted radio wave can then be temporarily reflected 
+          by the ionized gases of the meteor trail, back to Earth. The signal can then be trapped by a receiver whose frequency
+          is matched to the one of the transmitter. The trapped signal is called a meteor echo.
+          <div class="imag_right">
+            <img src="{{ url_for('static', filename='IMAGE/meteor_expl.jpg') }}" alt="Fanny" style="width: 55%; margin-right: 20px"/>
+            <img src="{{ url_for('static', filename='IMAGE/meteor_sch.jpg') }}" alt="Fanny" style="width: 40%"/>
+          </div>
+        </p>
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Transmitter Station Selection : 
+        </h3>
+        <p>
+          The summary is as follows: To integrate meteor detection into the CubeSat project, it was crucial 
+          to find a suitable transmitting station located near the Nimbus Center, where the receiving antenna was situated. 
+          The distance between the transmitter and the receiver determined the type of antenna to use. 
+          If the distance was less than 200 km, a simple wire dipole antenna was sufficient. 
+          Otherwise, a new antenna configuration was needed. The Beacon Stations website in Ireland was valuable 
+          for locating the nearest transmitting station, which was the EI2DKH station tuned to 144.178 MHz and located 
+          84.52 km from the Nimbus Center. This distance was critical for the project.
+          <div class="imag_center">
+            <img src="{{ url_for('static', filename='IMAGE/antenne_irlande.jpg') }}" alt="Fanny" style="width: 30%; margin-right: 20px"/>
+            <img src="{{ url_for('static', filename='IMAGE/dist_irlande.png') }}" alt="Fanny" style="width: 55%"/>
+          </div>
+        </p>
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Hardware : 
+        </h3>
+        <p>
+          We chose to use an RTL-SDR, a receiver capable of capturing signals in a range from 24 MHz to 1850 MHz. 
+          This decision proved advantageous as the RTL-SDR was already in our possession and used with our ground station, 
+          thereby avoiding supply problems, which was crucial given the very limited time available. 
+        </p>
+        <p>
+          We built the antenna using available materials, deviating from the original diagram's specifications. 
+          The materials used included a 50-ohm coaxial cable, copper wire for the horizontal parts, 
+          electrical tape instead of insulators, a BNC cable with crocodile clips, and connectors to link the BNC 
+          cable to the coaxial cable and connect the other end of the coaxial cable to the SDR.
+        </p>
+
+        <div>
+          <img src="{{ url_for('static', filename='IMAGE/antenne.jpg') }}" alt="House" style="width: 14%"/>
+          <img src="{{ url_for('static', filename='IMAGE/Speed Control2.gif') }}" alt="House" style="width: 14%"/>
+          <img src="{{ url_for('static', filename='IMAGE/commete.jpg') }}" alt="House" style="width: 14%"/>
+          <img src="{{ url_for('static', filename='IMAGE/Speed Control2.gif') }}" alt="House" style="width: 14%"/>
+          <img src="{{ url_for('static', filename='IMAGE/antenna.jpg') }}" alt="House" style="width: 14%"/>
+          <img src="{{ url_for('static', filename='IMAGE/RTL-SDR.jpg') }}" alt="House" style="width: 14%"/>
+          <img src="{{ url_for('static', filename='IMAGE/soft.jpg') }}" alt="House" style="width: 14%"/>
+      </div>
+
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Software :
+        </h3>
+        <p>
+          Regarding the software for controlling and receiving data from the SDR, we opted for SDR Console, 
+          a choice recommended by many websites. Available sources provided instructions on how to use it, 
+          simplifying the setup of our reception system.
+        </p>
+        <p>
+          This software had two main windows : a window at the top showing the spectrum of the
+          signal with frequency as the horizontal scale and amplitude as the vertical scale and one
+          window at the bottom with a waterfall display.
+        </p>
+        <p>
+          Using the waterfall display is the easiest way to observe meteor echoes. It is important to
+          note that Meteors could have the size of a grain of sand. If the meteors detected were big,
+          the strength of their echoes was represented by their brightness
+        </p>
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Place for the antenna : 
+        </h3>
+        <p>
+          After checking technical specifications, building an antenna for 144.178 MHz became essential due to the lack of one at Nimbus Center. 
+          Challenges included dimensions, positioning, and interference concerns. 
+          The antenna had to be placed in a location free from interference and linked to a computer with software. 
+          The courtyard between Nimbus and Rubicon Centers offered a suitable space.
+        </p>
+        <div>
+          <img src="{{ url_for('static', filename='IMAGE/Nimbus_garden.jpg') }}" alt="House" style="width: 50%"/>
+          <img src="{{ url_for('static', filename='IMAGE/antenna_posi.jpg') }}" alt="House" style="width: 49%"/>
+        </div>
+        <p>
+          But the most suitable option would still be an open area, not surrounded by buildings containing potential sources of interference, 
+          such as the Nimbus. (Within the given time frame, it was the simplest solution).
+        </p>
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Dimensioning of the antenna : 
+        </h3>
+        <p>
+          Formulas allow for the calculation of antenna dimensions based on the frequency of the transmitting station. 
+          The appropriate height and wavelength of the antenna can be determined based on the transmitting station's frequency. 
+        </p>
+        <p>
+          Calculations for 144.178 MHz resulted in a half-wavelength of 0.99 meters for the antenna, 
+          equivalent to approximately 0.49 meters for a quarter-wavelength. The height above the ground was approximately 
+          1.1 meters.
+          <div class="imag_center"> 
+            <img src="{{ url_for('static', filename='IMAGE/formule.png') }}" alt="House" style="width: 28%"/>
+          </div>
+        </p>
+        
+        <p>
+          Following modifications and real-world testing, the copper wires measured 0.85 meters each, 
+          and the antenna above the ground measured around 0.96 meters. The discrepancy between theory and experiment 
+          was attributed to interference, as well as the added length of the copper wires due to the BNC cable.
+        </p>
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Real trial and result : 
+        </h3>
+        <p>
+          During the trials, the outdoor antenna remained unchanged, but the coaxial cable connected to the spectrum analyzer for the test, was connected to the SDR 
+          (Software-Defined Radio). The SDR was then linked to a computer equipped with SDR Console software and set to the frequency of 144.178 MHz, 
+          corresponding to the transmitter's frequency. A signal was identified at this frequency on the software, 
+          allowing for centering it by clicking on it. It was also possible to adjust the bandwidth based on the 
+          signal's strength. 
+        </p>
+        <div>
+          <img src="{{ url_for('static', filename='IMAGE/result1.jpg') }}" alt="House" style="width: 50%"/>
+          <img src="{{ url_for('static', filename='IMAGE/result2.jpg') }}" alt="House" style="width: 49%" />
+        </div>
+        <p>
+          The software window provided the capability to observe frequency changes. However, 
+          due to a lack of time, the nature of these frequency changes could not be determined. It is likely that 
+          some of them were due to aircraft, given the proximity to Cork Airport.
+        </p>      
+      </div>
+
+      <h3 class="w3-border-bottom w3-border-light-black w3-padding-16"   id="about"></h3>
+
+      <div class="w3-row-padding w3-grayscale">
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <a href="https://www.linkedin.com/in/fannyenault/">
+            <img
+              src="{{ url_for('static', filename='IMAGE/Fanny_Img2.jpg') }}"
+              alt="House"
+              style="width: 100%"
+            />
+          </a>
+        </div>
+        <div class="w3-col l9 m6 w3-margin-bottom">
+          <h3 texte-color : #fff>Fanny Enault</h3>
+          <p class="w3-opacity">Intern ISEN 2023</p>
+          <div class="w3-col l20 m20 w3-margin-bottom">
+          <p>
+            A French student completing her 4th-year internship at Nimbus for a
+            duration of 3 months as part of her engineering studies with a
+            specialization in electronic and embedded systems. Fanny's
+            engineering school is located in Brest, France.
+          </p>
+          <p>
+            Fanny, having chosen an alternating study program for her year 2024, 
+            this experience at Nimbus was the first realization of her theoretical knowledge. 
+            She was able to initiate significant steps, especially for the start of the Cubesat 
+            project at Nimbus, which relied solely on theory until her arrival.
+          </p>
+          <p>
+            Fanny initiated the project and developed an initial prototype, but there are still
+             improvements to finalize the core idea that can be further refined by future interns. 
+          </p>
+          
+      </div>
+          <p>
+            <a href="mailto:fanny.enault@mycit.ie?subject=Question%20Cubesat">
+              <button class="w3-button w3-light-grey w3-block">Contact</button>
+            </a>
+          </p>
+
+        </div>
+        
+      </div>
+
+      <h3 class="w3-border-bottom w3-border-light-black w3-padding-16"></h3>
+
+      <!-- Contact Section -->
+      <div class="w3-container w3-padding-32" id="contact">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+            Some Links
+        </h3>
+        <p>Different sources to better understand the project as a whole.</p>
+        
+        <div class="links">
+            <div class="link-item">
+              <a href="https://en.wikipedia.org/wiki/Asteroid_impact_prediction" target="_blank">
+                <img src="{{ url_for('static', filename='IMAGE/Wikipedia-Logo.png') }}" alt="Yann" style="width: 100%" />
+            </a>
+            </div>
+            <div class="link-item">
+              <a
+                href="/Youtube_Link_Meteor"
+                target="_blank"
+                ><img src="{{ url_for('static', filename='IMAGE/Youtube-logo-png.png') }}" alt="Yann" style="width: 100%" /></a
+              >
+            </div>
+            <div class="link-item">
+              <a
+                href="/Project_Link_Meteor"
+                target="_blank"
+                ><img src="{{ url_for('static', filename='IMAGE/project.png') }}" alt="Yann" style="width: 100%" /></a
+              >
+            </div>
+            <div class="link-item">
+              <a href="https://github.com/alanbjohnston" target="_blank"
+                ><img src="{{ url_for('static', filename='IMAGE/GitHub-Logo.png') }}" alt="Yann" style="width: 100%" /></a
+              >
+            </div>
+          </div>
+
+          <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"></h3>
+
+      <!-- Image of location/map -->
+      <div class="w3-container">
+        <a href="https://isen-brest.fr/" target="_blank">
+        <img
+          src="{{ url_for('static', filename='IMAGE/isen.jpg') }}"
+          class="w3-image"
+          style="width: 100%"
+        />
+        </a>
+      </div>
+
+      <!-- End page content -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-center w3-black w3-padding-16">
+      <p>
+        Powered by
+        <a
+          href="https://nimbusgateway.ie/"
+          title="Nimbus Gateway"
+          target="_blank"
+          class="w3-hover-text-green"
+          >Nimbus</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>

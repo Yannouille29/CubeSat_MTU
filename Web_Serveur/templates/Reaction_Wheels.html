@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reaction Wheels</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Reaction_Wheels.css') }}" />
+  </head>
+  <body>
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+      <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+        <a href="/index" class="w3-bar-item w3-button"
+          ><b>CubeSat</b> Home</a
+        >
+        <!-- Float links to the right. Hide them on small screens -->
+        <div class="w3-right w3-hide-small">
+          <a href="#projects" class="w3-bar-item w3-button">Projects</a>
+          <a href="#about" class="w3-bar-item w3-button">Author</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header
+      class="w3-display-container w3-content w3-wide"
+      style="max-width: 1500px"
+      id="home"
+    >
+      <img
+        class="w3-image"
+        src="{{ url_for('static', filename='IMAGE/Capture2.png') }}"
+        alt="Architecture"
+        width="1500"
+        height="800"
+      />
+      <div class="w3-display-middle w3-margin-top w3-center">
+        <h1 class="w3-xxlarge w3-text-white">
+          <span class="w3-padding w3-black w3-opacity-min"><b>REACTION WHEELS</b></span>
+          <span class="w3-hide-small w3-text-light-grey">CUBESAT</span>
+        </h1>
+      </div>
+    </header>
+
+    <!-- Page content -->
+    <div class="w3-content w3-padding" style="max-width: 1564px">
+      <!-- Project Section -->
+      <div class="w3-container w3-padding-32" id="projects">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Images of Project
+        </h3>
+      </div>
+
+      <div class="w3-row-padding">
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-display-container">
+            <div class="w3-display-topleft w3-black w3-padding">
+              Attitude Control Platform
+            </div>
+            <a href="https://commons.erau.edu/cgi/viewcontent.cgi?article=1707&context=discovery-day">
+              <img
+                src="{{ url_for('static', filename='IMAGE/reaction_test.jpg') }}"
+                alt="House"
+                style="width: 100%"
+              />
+            </a>
+
+          </div>
+        </div>
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-display-container">
+            <div class="w3-display-topleft w3-black w3-padding">
+              One Reaction Wheel
+            </div>
+            <a href="https://www.youtube.com/watch?v=zkB3eqjh_mk&t=480s">
+              <img src="{{ url_for('static', filename='IMAGE/reaction_test_2.jpg') }}" alt="House" style="width: 100%" />
+            </a>
+          </div>
+        </div>
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-display-container">
+            <div class="w3-display-topleft w3-black w3-padding">
+              3D Simulation
+            </div>
+
+              <img
+                src="{{ url_for('static', filename='IMAGE/Solidwork_fin.jpg') }}"
+                alt="House"
+                style="width: 100%;
+                border-top-width: 1px;
+                border-top-style: solid;
+                border-left-width: 1px;
+                border-left-style: solid;
+                border-bottom-width: 1px;
+                border-bottom-style: solid;
+                border-right-width: 1px;
+                border-right-style: solid;
+                border-block-color: #d2cdcd;
+                border-left-color: #d2cdcd;
+                border-right-color: #d2cdcd;"
+              />
+
+          </div>
+        </div>
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-display-container">
+            <div class="w3-display-topleft w3-black w3-padding">
+              Other Look
+            </div>
+            <a href="http://ise.ait.ac.th/wp-content/uploads/sites/57/2020/12/Development-and-Motion-Control-of-Single-Axis-Reaction-Wheel-Based-Cubic-Robot.pdf">
+              <img src="{{ url_for('static', filename='IMAGE/cube2.jpg') }}" alt="House" style="width: 100%;
+              border-top-width: 1px;
+              border-top-style: solid;
+              border-left-width: 1px;
+              border-left-style: solid;
+              border-bottom-width: 1px;
+              border-bottom-style: solid;
+              border-right-width: 1px;
+              border-right-style: solid;
+              border-block-color: #d2cdcd;
+              border-left-color: #d2cdcd;
+              border-right-color: #d2cdcd;" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Section -->
+      <div class="w3-container w3-padding-32">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Introduction :
+        </h3>
+        <p>
+          A CubeSat is a small, cube-shaped satellite widely used for cost-effective space missions. We briefly described how it operates and what it can be used for on the homepage.
+        </p>
+        <p>
+          As part of this project at Nimbus, it was necessary to make improvements to the basic support structure of the CubeSat. In this context, the addition of reaction wheels to a CubeSat represents an intriguing technological advancement, as it enables precise and efficient control of the satellite's orientation. In this article, we will explore the possibility of integrating two reaction wheels into a CubeSat and how they could enhance its capabilities.
+        </p>
+
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Study of the choice :
+        </h3>
+        <p>
+          Commencing our deliberation on improving the control of our CubeSat's orientation, several options were available to us, and we will describe them below.
+        </p>
+        <p>
+          <strong>Gyroscopes</strong> : The gyroscopes used in satellites are sophisticated mechanical devices that utilize the principle of angular momentum conservation to determine and maintain the satellite's spatial orientation. They consist of a rapidly rotating rotor whose axis of rotation remains fixed relative to space. When the satellite undergoes changes in orientation, the gyroscope responds by preserving its own orientation, allowing sensors to measure angular variations.
+        </p>
+        <p>
+          <u>Advantage</u> : A key advantage of CMGs (Control Moment Gyroscope) over Reaction Wheels lies in their capability to produce higher torques owing to their greater angular momentum capacity. This equips them with superior capabilities to effectively manage substantial disturbances resulting from external forces. Furthermore, CMGs are not plagued by concerns such as wheel saturation, which is a common occurrence in Reaction Wheels under high-output conditions.
+        </p>
+        <p>
+          <u>Default</u>  :Nevertheless, CMGs also have certain drawbacks. They are relatively more complex systems requiring precise maintenance for optimal performance. Furthermore, implementing multiple CMGs for redundancy can significantly increase the spacecraft's weight and cost.
+        </p>
+        <p>
+          <strong>Reaction Wheels</strong> : A "reaction wheel" system in a satellite is primarily composed of a rotating wheel mounted on an axis, an electric motor to control its speed, sensors to measure the satellite's orientation, and control electronics. When the satellite needs to change its orientation, the electric motor spins the wheel at a specific speed, generating angular momentum to make precise orientation adjustments. This enables the satellite to maintain a stable orientation and adapt to necessary changes to accomplish its space mission.
+        </p>
+        <p>
+          <u>Advantage</u> : On the flip side, Reaction Wheels are comparatively simpler and more cost-effective to produce and upkeep. They also deliver immediate response times, rendering them well-suited for small satellites or situations demanding real-time adjustments. Additionally, Reaction Wheels excel in precision thanks to their capacity to generate smaller torque increments. They require less power consumption than CMGs as they do not need continuous power supply once they achieve their desired rotational speed.
+        </p>
+        <p>
+          <u>Default</u> : However, Reaction Wheels, despite their benefits, do face certain constraints. One of these is their lower potential for angular momentum compared to CMGs. This limitation hinders their ability to effectively manage significant disturbances originating from external sources. Additionally, Reaction Wheels can encounter saturation problems in situations demanding high torque, necessitating specific programming or intricate control algorithms for resolution.
+        </p>
+        <p>
+          We have made the final decision to opt for reaction wheels because their installation is simpler and requires less specialized equipment to conduct initial tests within just two months. Additionally, the potential impact of a new component order on the outcome is a major concern given the time constraints. Furthermore, it is easier to find numerous examples and sources of information available on reaction wheels and their setup, which will facilitate our development and testing process. Moreover, for our use case, a less power-hungry technology in terms of power supply suits us better, even though it is slightly more cumbersome.
+        </p>
+
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Understanding Reaction Wheels :
+        </h3>
+        <p>
+          Reaction wheels are devices used on Earth in projects involving the balance of objects, but they are primarily employed in satellites and other spacecraft to control the orientation of the object. The basic principle involves changing the rotation speed of one or more wheels placed at strategic points on the spacecraft to achieve a desired rotation like we describe in the first part. 
+        </p>
+        <p>
+        <a href="https://www.youtube.com/watch?v=zkB3eqjh_mk&t=135s">
+        <img src="{{ url_for('static', filename='IMAGE/reaction_expl.png') }}" alt="House" style="width: 50%"/>
+        </a>
+        <img src="{{ url_for('static', filename='IMAGE/reaction_expli.jpg') }}" alt="House" style="width: 49%"/>
+        </p>
+        <p>
+          We will see later in this page that this choice is not made randomly and that this method offers specific advantages in our situation.
+        </p>
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Integration of Reaction Wheels into a CubeSat : 
+        </h3>
+        <p>
+          The mechanical design: So, we have chosen to integrate a total of 2 reaction wheels. This way, we have the ability to rotate on all 3 axes, even though it requires a sequencing that would not have been necessary with 3 wheels. (Indeed, to reach certain positions, we will need to activate the X-axis wheel separately from the Y-axis wheel). Therefore, we have already started to think about how to optimize the integration of the wheels into the 10cm x 10cm CubeSat. This visualization was necessary and possible through the use of SolidWorks software, which we will subsequently use to 3D-print the various support pieces.
+        </p>
+          <p>
+          <img src="{{ url_for('static', filename='IMAGE/solidwork.jpg') }}" alt="House" style="width: 34%"/>
+          <img src="{{ url_for('static', filename='IMAGE/solidwork2.jpg') }}" alt="House" style="width: 38%"/>
+          <img src="{{ url_for('static', filename='IMAGE/Solidwork_fin2.jpg') }}" alt="House" style="width: 27%"/>
+          </p>
+        <p>
+          Control Systems: In our basic CubeSat, we utilize an Arduino SparkFun Pro Micro board, which comes equipped with both analog and digital pins. To directly control the motor speed, all we need to do is add a "speed control" device like an "ESC_Speed_Control" and utilize one of the pins to send a PWM signal from the SparkFun. Therefore, our setup would consist of 2 DC motors, 2 speed controllers, an Arduino SparkFun board, a battery, and our gyroscope sensor.
+        </p>
+        <p>
+          <img src="{{ url_for('static', filename='IMAGE/esc.png') }}" alt="House" style="width: 24%"/>
+          <img src="{{ url_for('static', filename='IMAGE/sparkfun.jpg') }}" alt="House" style="width: 24%"/>
+          <img src="{{ url_for('static', filename='IMAGE/MPU.png') }}" alt="House" style="width: 24%"/>
+          <img src="{{ url_for('static', filename='IMAGE/MOTOR.jpg') }}" alt="House" style="width: 24%"/>
+          </p>
+        <p>
+          If we wish to integrate our software to automatically orient our CubeSat for taking pictures of the Earth, we can achieve this by programming Arduino on the SparkFun board and implementing a PID controller.
+        </p>
+        <p>
+         Software: In our case, we have two possible software solutions to integrate into our CubeSat. The first solution would enable automatic orientation as soon as the CubeSat is ejected from the rocket, ensuring full autonomy from launch to mission completion. The second possibility would be to implement a module for receiving data, allowing us to control the orientation from the ground station. This option would be much more complex to implement if we want to adhere to real mission constraints.
+        </p>
+        <p>
+          Power Supply: In our case, the reaction wheels will be powered by a battery, which is autonomous because it is connected to all the solar panels.
+        </p>
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Demonstrate proper functioning :
+        </h3>
+        <p>
+          In our case, we aim to set up a robust demonstration to observe the effects of implementing 2 reaction wheels in our "CubeSat" format. There are three different ways to observe the operation. 
+        </p>
+        <p>
+          1. The first method involves suspension using wires attached to all four sides of a single face of the cube. This approach is the simplest to implement and the least costly. 
+        </p>
+        <p>
+          2. The second option is a simulation system using 3D printing or simple materials, which entails nesting three circles or squares to replicate free movement. 
+        </p>
+        <p>
+          3. The final method is an air-bearing system, which suspends a sphere containing the CubeSat in a "levitating" fashion through air propulsion from a support. This allows for 360-degree freedom of rotation in all directions. However, the latter method appears to be somewhat complex to set up.
+        </p>
+        <div class="imag_center">
+          <a href="https://www.youtube.com/watch?v=zkB3eqjh_mk&t=190s">
+          <img src="{{ url_for('static', filename='IMAGE/fil.jpg') }}" alt="House" style="width: 26%; margin-right: 20px;"/>
+          </a>
+          <a href="https://commons.erau.edu/cgi/viewcontent.cgi?article=1290&context=db-srs">
+          <img src="{{ url_for('static', filename='IMAGE/3d.jpg') }}" alt="House" style="width: 26%; margin-right: 20px; margin-left: 20px;"/>
+          </a>
+          <a href="https://www.youtube.com/watch?v=LmZ5PlDWf9w">
+          <img src="{{ url_for('static', filename='IMAGE/aire.jpg') }}" alt="House" style="width: 26% ; margin-left: 20px;"/>
+          </a>
+        </div>
+
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"   id="about">
+          Conclusion :
+        </h3>
+        <p>
+          The addition of two reaction wheels to a CubeSat represents a significant technological advancement that greatly enhances its ability to control its orientation in space. This opens up new possibilities for cost-effective space missions and scientific research. Through this implementation, CubeSats can achieve new levels of precision and efficiency in their operations. 
+        </p>
+      </div>
+
+      <h3 class="w3-border-bottom w3-border-light-black w3-padding-16"></h3>
+
+      <div class="w3-row-padding w3-grayscale">
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <a href="https://www.linkedin.com/in/yann-huguet-7a4a2124a/">
+            <img
+              src="{{ url_for('static', filename='IMAGE/Yann_Img_2.jpg') }}"
+              alt="House"
+              style="width: 100%"
+            />
+          </a>
+        </div>
+        <div class="w3-col l9 m6 w3-margin-bottom">
+          <h3 texte-color : #fff>Yann Huguet</h3>
+          <p class="w3-opacity">Intern INSA 2023</p>
+          <div class="w3-col l20 m20 w3-margin-bottom">
+          <p>
+            A French student completing his 4th-year internship at Nimbus for a
+            duration of 5 months as part of his alternating engineering studies,
+            specializing in advanced electronics and computer science. Yann's
+            engineering school is located in Rennes, France.
+          </p>
+          <p>
+          Having experience in electronics through internships in electronics 
+          and currently, a two-year apprenticeship with a leading French electronics 
+          company named Thales, Yann has chosen this path for the new aspects it 
+          offers, such as optimizing the operating conditions of a cubesat by 
+          relying on physical movements.
+        </p>
+        <p>
+        Yann initiated the project and developed an initial prototype, but there are 
+        still improvements to finalize the core idea that can be further refined by future interns.
+      </p>
+      </div>
+          <p>
+            <a href="mailto:yannpije@gmail.com?subject=Question%20Cubesat">
+              <button class="w3-button w3-light-grey w3-block">Contact</button>
+            </a>
+          </p>
+
+        </div>
+        
+      </div>
+
+      <h3 class="w3-border-bottom w3-border-light-black w3-padding-16"></h3>
+
+      <!-- Contact Section -->
+      <div class="w3-container w3-padding-32" id="contact">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+            Some Links
+        </h3>
+        <p>Different sources to better understand the project as a whole.</p>
+        
+        <div class="links">
+            <div class="link-item">
+              <a href="https://en.wikipedia.org/wiki/Reaction_wheel" target="_blank">
+                <img src="{{ url_for('static', filename='IMAGE/Wikipedia-Logo.png') }}" alt="Yann" style="width: 100%" />
+            </a>
+            </div>
+            <div class="link-item">
+              <a
+                href="/Youtube_Link_RW"
+                target="_blank"
+                ><img src="{{ url_for('static', filename='IMAGE/Youtube-logo-png.png') }}" alt="Yann" style="width: 100%" /></a
+              >
+            </div>
+            <div class="link-item">
+              <a
+                href="/Project_Link_RW"
+                target="_blank"
+                ><img src="{{ url_for('static', filename='IMAGE/project.png') }}" alt="Yann" style="width: 100%" /></a
+              >
+            </div>
+            <div class="link-item">
+              <a href="https://github.com/alanbjohnston" target="_blank"
+                ><img src="{{ url_for('static', filename='IMAGE/GitHub-Logo.png') }}" alt="Yann" style="width: 100%" /></a
+              >
+            </div>
+          </div>
+
+          <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"></h3>
+
+      <!-- Image of location/map -->
+      <div class="w3-container">
+        <a href="https://www.insa-rennes.fr/index.html" target="_blank">
+        <img
+          src="{{ url_for('static', filename='IMAGE/Accueil_INSA_Rennes.jpg') }}"
+          class="w3-image"
+          style="width: 100%"
+        />
+      </a>
+      </div>
+
+      <!-- End page content -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-center w3-black w3-padding-16">
+      <p>
+        Powered by
+        <a
+          href="https://nimbusgateway.ie/"
+          title="Nimbus Gateway"
+          target="_blank"
+          class="w3-hover-text-green"
+          >Nimbus</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>
