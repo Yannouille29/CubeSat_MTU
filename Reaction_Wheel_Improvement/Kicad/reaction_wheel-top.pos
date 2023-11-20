@@ -1,0 +1,13 @@
+### Module positions - created on Mon Nov 20 18:37:17 2023 ###
+### Printed by Pcbnew version (6.0.11)
+## Unit = mm, Angle = deg.
+## Side : top
+# Ref     Val                 Package                               PosX       PosY       Rot  Side
+U1        DRV8838DSGR         SON50P200X200X80-9N               125.2220  -103.1240   90.0000  top
+U2        DRV8838DSGR         SON50P200X200X80-9N               128.7780  -103.1240   90.0000  top
+U3        MPU6050             MPU6050                           111.2520   -82.5500  -90.0000  top
+U4        B2B-PH-K-S_LF__SN_  SHDR2W50P0X200_1X2_590X450X600P   134.6040  -104.6480    0.0000  top
+U5        DEV-12587           DEV12587                          134.6200   -71.1200   90.0000  top
+U6        B2B-PH-K-S_LF__SN_  SHDR2W50P0X200_1X2_590X450X600P   121.3960  -104.6900    0.0000  top
+U7        B2B-PH-K-S_LF__SN_  SHDR2W50P0X200_1X2_590X450X600P   140.2080   -71.1200   90.0000  top
+## End
