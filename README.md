@@ -14,10 +14,11 @@ For each of these separate projects, you'll find dedicated folders containing al
 
 ## Folder Structure
 
-- **CubeSat_Construction and Troubleshooting:** Contains details related to the construction phase following the AMSAT prototype and the solutions to different problems.
+- **CubeSat_Troubleshooting:** Contains details related to the construction phase following the AMSAT prototype and the solutions to different problems.
 - **Visualisation_Improvement:** Includes resources for the real-time 3D visualization of the CubeSat.
 - **Reaction_Wheel_Improvement:** Encompasses information regarding the CubeSat's ability to orient itself using reaction wheels.
 - **Soft:** Holds the original base code with additional comments for understanding purposes.
+- **Web_Serveur:** Contains all the files necessary to visualize various web pages related to the Cubesat, including the work done by other group members.
 
 Please refer to individual folders for specific details and resources related to each stage of the project.
 
