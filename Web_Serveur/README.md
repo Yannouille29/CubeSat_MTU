@@ -1,4 +1,4 @@
-# Web Server for Project X
+# Web Server for Project CubeSat
 
 This folder contains all the necessary files to launch the website. It's important to note that this isn't just a collection of HTML pages; it's a functioning server. To run the server, ensure that you're connected to the Wi-Fi network and specify the IP address in the "pc_ip = 192.168.xxx.xxx" field within the 'pc.py' script.
 
