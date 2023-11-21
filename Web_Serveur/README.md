@@ -16,3 +16,5 @@ Press CTRL+C to quit
 To access the website, open your web browser and enter the following URL:
 http://localhost:8080/index
 This will direct you to the project's homepage.
+
+The file 'donnees.txt' is important for the 3D Visualization page as it contains the lines received from the Raspberry Ground Station. This file facilitates real-time data modification on the website. Additionally, it helps verify if the communication is functioning correctly, indicated by the appearance of a new line approximately every 6 seconds.
