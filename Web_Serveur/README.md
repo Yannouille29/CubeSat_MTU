@@ -6,6 +6,7 @@ Once this configuration is set, launch the server from the terminal or command p
 local_project_path\serveur> python .\pc.py
 
 After executing this command, the server will start and display a message like:
+
 WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:8080
