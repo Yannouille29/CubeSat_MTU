@@ -14,9 +14,9 @@ For each of these separate projects, you'll find dedicated folders containing al
 
 ## Folder Structure
 
-- **CubeSat_Construction:** Contains details related to the construction phase following the AMSAT CubeSatSim prototype.
+- **CubeSat_Construction and Troubleshooting:** Contains details related to the construction phase following the AMSAT prototype and the solutions to different problems.
 - **Real-time_Visualization:** Includes resources for the real-time 3D visualization of the CubeSat.
-- **Maneuverability_Enhancement:** Encompasses information regarding the CubeSat's ability to orient itself using reaction wheels.
+- **Reaction Wheel:** Encompasses information regarding the CubeSat's ability to orient itself using reaction wheels.
 - **Soft:** Holds the original base code with additional comments for understanding purposes.
 
 Please refer to individual folders for specific details and resources related to each stage of the project.
@@ -24,10 +24,6 @@ Please refer to individual folders for specific details and resources related to
 ## Important Note
 
 The commented sections in the 'soft' directory serve as aids for understanding the base code and should not be modified. They are solely intended to facilitate comprehension.
-
-## Installation and Usage
-
-Provide instructions on how to set up and use the project, if applicable.
 
 ## Contributors
 
