@@ -61,3 +61,5 @@ After making any changes to the `rasp.py` script, follow these commands to updat
 
 These commands ensure that the modifications made in the `rasp.py` script are reflected and the service is running with the updated changes.
 Everything else is handled automatically by the website (all the .js files).
+
+But on the Raspberry, you can verify in the 'sender2.log' file if the information is indeed being sent from the Raspberry to the website.
