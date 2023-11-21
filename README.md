@@ -1,4 +1,4 @@
-# Project Name
+# CubeSat MTU
 
 This project is divided into two distinct stages. The first stage involved constructing a CubeSat using the information provided for the AMSAT CubeSatSim prototype, available at [CubeSatSim repository](https://github.com/alanbjohnston/CubeSatSim.git). We followed the steps outlined and replicated the foundation.
 
