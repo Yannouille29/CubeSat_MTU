@@ -19,4 +19,4 @@ This will direct you to the project's homepage.
 
 The file 'donnees.txt' is important for the 3D Visualization page as it contains the lines received from the Raspberry Ground Station. This file facilitates real-time data modification on the website. Additionally, it helps verify if the communication is functioning correctly, indicated by the appearance of a new line approximately every 6 seconds.
 
-"The file 'Rasp.py' is also useful for the 3D Visualization page and should be placed on the ground station as explained in the 'Visualisation_Improvement' folder."
+The file 'Rasp.py' is also useful for the 3D Visualization page and should be placed on the ground station as explained in the 'Visualisation_Improvement' folder.
