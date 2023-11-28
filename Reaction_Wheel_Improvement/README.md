@@ -4,7 +4,7 @@ This repository contains all the essential elements created for the CubeSat Reac
 
 ## Contents
 
-- **3D_Simulation**: This directory contains all the KiCad files updated specifically for the project. It includes the necessary files for the 3D simulation and modeling related to the CubeSat Reaction Wheel.
+- **3D_Simulation**: This directory contains all the Solidwork files updated specifically for the project. It includes the necessary files for the 3D simulation and modeling related to the CubeSat Reaction Wheel.
 
 - **Arduino**: The Arduino directory houses the code essential for the SparkFun Arduino to operate within the Reaction Wheel project. 
 
@@ -14,10 +14,10 @@ This repository contains all the essential elements created for the CubeSat Reac
 
 ### 3D_Simulation
 
-This directory includes KiCad files that are crucial for 3D simulation and modeling. To utilize these files:
+This directory includes Solidwork files that are crucial for 3D modeling. To utilize these files:
 
-1. Ensure you have KiCad installed on your system.
-2. Open the files using KiCad to view and simulate the 3D model.
+1. Ensure you have Solidwork installed on your system or another 3D visualisation tool.
+2. Open the files using Solidwork to view the 3D model.
 
 ### Arduino
 
@@ -37,5 +37,5 @@ In this directory, particularly in the "Kicad_V2" folder, you'll find electronic
 
 Please refer to individual directories for specific instructions, codes, or diagrams related to their respective components of the CubeSat Reaction Wheel project.
 
-For questions or inquiries, feel free to contact [insert contact information or maintainers here].
+For questions or inquiries, feel free to contact [Yann HUGUET].
 
