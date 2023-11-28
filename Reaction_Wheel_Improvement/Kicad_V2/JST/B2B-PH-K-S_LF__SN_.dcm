@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP B2B-PH-K-S_LF__SN_
+D Conn Shrouded Header HDR 2 POS 2mm Solder ST Thru-Hole Box
+K
+F https://datasheet.lcsc.com/szlcsc/JST-Sales-America-B2B-PH-K-S-LF-SN_C131337.pdf
+$ENDCMP
+#
+#End Doc Library

@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP DRV8838DSGR
+D TEXAS INSTRUMENTS - DRV8838DSGR - MOTOR DRIVER, DC BRUSH, 1.8A, WSON-8
+K
+F http://www.ti.com/lit/ds/symlink/drv8838.pdf
+$ENDCMP
+#
+#End Doc Library

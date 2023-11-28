@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP A11HP
+D Switch Toggle OFF None ON SPST Flat Lever PC Pins 0.1A 28VAC 28VDC 0.4VA PC Mount
+K
+F https://www.mouser.co.uk/datasheet/2/295/Atoggles-19525.pdf
+$ENDCMP
+#
+#End Doc Library
