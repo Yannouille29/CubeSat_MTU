@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CubeSat MTU</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Cubesat.css') }}" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{{ url_for('static', filename='JS/Test.js') }}"></script>
+  </head>
+  <body>
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+      <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+        <a href="#home" class="w3-bar-item w3-button"
+          ><b>CubeSat</b> Home</a
+        >
+        <!-- Float links to the right. Hide them on small screens -->
+        <div class="w3-right w3-hide-small">
+          <a href="#projects" class="w3-bar-item w3-button">Projects</a>
+          <a href="#about" class="w3-bar-item w3-button">Team</a>
+          <a href="#contact" class="w3-bar-item w3-button">Links</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header
+      class="w3-display-container w3-content w3-wide"
+      style="max-width: 1500px"
+      id="home"
+    >
+      <img
+        class="w3-image"
+        src="{{ url_for('static', filename='IMAGE/Capture.png') }}"
+        alt="Architecture"
+        width="1500"
+        height="800"
+      />
+      <div class="w3-display-middle w3-margin-top w3-center">
+        <h1 class="w3-xxlarge w3-text-white">
+          <span class="w3-padding w3-black w3-opacity-min"><b>MTU</b></span>
+          <span class="w3-hide-small w3-text-light-grey">CUBESAT</span>
+        </h1>
+      </div>
+    </header>
+
+    <!-- Page content -->
+    <div class="w3-content w3-padding" style="max-width: 1564px">
+      <!-- Project Section -->
+      <div class="w3-container w3-padding-32" id="projects">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Projects
+        </h3>
+      </div>
+
+      <div class="w3-row-padding">
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-display-container">
+            <div class="w3-display-topleft w3-black w3-padding">
+              Reaction Wheels
+            </div>
+            <a href="/Reaction_Wheels">
+              <img
+                src="{{ url_for('static', filename='IMAGE/cubesat_with_reaction_wheels.jpg') }}"
+                alt="House"
+                style="width: 100%"
+              />
+            </a>
+          </div>
+        </div>
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-display-container">
+            <div class="w3-display-topleft w3-black w3-padding">
+              Wifi Communication
+            </div>
+            <a href="/Wifi_Communication">
+              <img src="{{ url_for('static', filename='IMAGE/Wifi.jpg') }}" alt="House" style="width: 100%" />
+            </a>
+          </div>
+        </div>
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-display-container">
+            <div class="w3-display-topleft w3-black w3-padding">
+              3D Visualisation
+            </div>
+            <a href="/3D_Visualisation">
+              <img
+                src="{{ url_for('static', filename='IMAGE/Visualisation.jpg') }}"
+                alt="House"
+                style="width: 100%"
+              />
+            </a>
+          </div>
+        </div>
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-display-container">
+            <div class="w3-display-topleft w3-black w3-padding">
+              Meteor Detection
+            </div>
+            <a href="/Meteor_Detection">
+              <img src="{{ url_for('static', filename='IMAGE/meteor.jpg') }}" alt="House" style="width: 100%" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Section -->
+      <div class="w3-container w3-padding-32" id="about">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          About Cubesat
+        </h3>
+        <p>
+          A CubeSat is a type of miniature cube-shaped satellite. They are used
+          for low-cost space missions, scientific research, technology
+          development, or educational purposes. CubeSats have standardized
+          sizes, typically measured in "U" units (1U, 2U, 3U, etc.), with each
+          unit being approximately 10x10x10 cm.
+        </p>
+        
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Nimbus Project
+        </h3>
+        <p>
+          Under the supervision and guidance of JUAN FRANCISCO MARTINEZ, a group
+          of trainees in the fields of electronics and computer science actively
+          joined a research project at the MTU research center, known as NIMBUS.
+          This internship experience at the NIMBUS center offers valuable
+          opportunities for these trainees to gain significant hands-on
+          experience and make meaningful contributions to technological
+          advancements within the research team.
+        </p>
+      </div>
+
+      <div class="w3-row-padding w3-grayscale">
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <a href="https://nimbusgateway.ie/people/juan-francisco-martinez/">
+            <img
+              src="{{ url_for('static', filename='IMAGE/juan-300x300.jpg') }}"
+              alt="House"
+              style="width: 100%"
+            />
+          </a>
+          <h3>Juan Francisco Martinez</h3>
+          <p class="w3-opacity">Research Fellow & Group Lead</p>
+          <p>
+            Juan is the supervisor of the Cubesat project, with over 15 years of
+            experience in the field of electronics and more than 100 projects
+            completed at various levels, combining academic research with
+            industrial development and innovation.
+          </p>
+          <p>
+            <a
+              href="mailto:JuanFrancisco.Martinez@mtu.ie?subject=Question%20Cubesat"
+            >
+              <button class="w3-button w3-light-grey w3-block">Contact</button>
+            </a>
+          </p>
+        </div>
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <a href="https://www.linkedin.com/in/fannyenault/">
+            <img src="{{ url_for('static', filename='IMAGE/Fanny_Img.jpg') }}" alt="Fanny" style="width: 100%" />
+          </a>
+          <h3>Fanny Enault</h3>
+          <p class="w3-opacity">Intern ISEN 2023</p>
+          <p>
+            A French student completing her 4th-year internship at Nimbus for a
+            duration of 3 months as part of her engineering studies with a
+            specialization in electronic and embedded systems. Fanny's
+            engineering school is located in Brest, France.
+          </p>
+          <p>
+            <a href="mailto:fanny.enault@mycit.ie?subject=Question%20Cubesat">
+              <button class="w3-button w3-light-grey w3-block">Contact</button>
+            </a>
+          </p>
+        </div>
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <a href="https://www.linkedin.com/in/yann-huguet-7a4a2124a/">
+            <img src="{{ url_for('static', filename='IMAGE/Yann_Img.jpg') }}" alt="Yann" style="width: 100%" />
+          </a>
+          <h3>Yann Huguet</h3>
+          <p class="w3-opacity">Intern INSA 2023</p>
+          <p>
+            A French student completing his 4th-year internship at Nimbus for a
+            duration of 5 months as part of his alternating engineering studies,
+            specializing in advanced electronics and computer science. Yann's
+            engineering school is located in Rennes, France.
+          </p>       
+          <p>
+            <a href="mailto:yannpije@gmail.com?subject=Question%20Cubesat">
+              <button class="w3-button w3-light-grey w3-block">Contact</button>
+            </a>
+          </p>
+        </div>
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <a href="https://www.linkedin.com/in/amélie-castellano-205099255/">
+            <img
+              src="{{ url_for('static', filename='IMAGE/Amelie_Img.jpg') }}"
+              alt="Amelie"
+              style="width: 100%"
+            />
+          </a>
+          <h3>Amélie Castellano</h3>
+          <p class="w3-opacity">Intern ESEO 2023</p>
+          <p>
+            A French student completing her 3rd-year internship at Nimbus for a
+            duration of 4 months as part of her engineering studies, with a
+            specialization in in embedded systems programming. Amélie's
+            engineering school is located in Angers, France.
+          </p>
+          <p>
+            <a
+              href="mailto:amelie.castellano@mycit.ie?subject=Question%20Cubesat"
+            >
+              <button class="w3-button w3-light-grey w3-block">Contact</button>
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Contact Section -->
+      <div class="w3-container w3-padding-32" id="contact">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+            Some Links
+        </h3>
+        <p>Different sources to better understand the project as a whole.</p>
+        
+        <div class="links">
+            <div class="link-item">
+              <a href="https://fr.wikipedia.org/wiki/CubeSat" target="_blank">
+                <img src="{{ url_for('static', filename='IMAGE/Wikipedia-Logo.png') }}" alt="Yann" style="width: 100%" />
+            </a>
+            </div>
+            <div class="link-item">
+              <a
+                href="https://www.youtube.com/watch?v=swWasXBH7PU&list=PL-pgyk1pc4_MzuElSC6wYTKJu4z9UWvrx&index=2"
+                target="_blank"
+                ><img src="{{ url_for('static', filename='IMAGE/Youtube-logo-png.png') }}" alt="Yann" style="width: 100%" /></a
+              >
+            </div>
+            <div class="link-item">
+              <a
+                href="https://www.amsat.org/product/amsat-cubesatsim-pcb/"
+                target="_blank"
+                ><img src="{{ url_for('static', filename='IMAGE/AMSATALTLOGO.png') }}" alt="Yann" style="width: 100%" /></a
+              >
+            </div>
+            <div class="link-item">
+              <a href="https://github.com/alanbjohnston" target="_blank"
+                ><img src="{{ url_for('static', filename='IMAGE/GitHub-Logo.png') }}" alt="Yann" style="width: 100%" /></a
+              >
+            </div>
+          </div>
+
+          <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"></h3>
+
+      <!-- Image of location/map -->
+      <div class="w3-container">
+        <img
+          src="{{ url_for('static', filename='IMAGE/maxresdefault.jpg') }}"
+          class="w3-image"
+          style="width: 100%"
+        />
+      </div>
+      <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"></h3>
+
+      <div>
+        <a href="https://nimbusgateway.ie/">
+        <img src="{{ url_for('static', filename='IMAGE/logo_nimbus.jpg') }}" alt="House" style="width: 19%"/>
+        </a>
+        <a href="https://www.insa-rennes.fr/index.html">
+        <img src="{{ url_for('static', filename='IMAGE/logo_MTU.jpg') }}" alt="House" style="width: 19%"/>
+        </a>
+        <a href="https://eseo.fr/je-m-oriente/mon-campus/angers/">
+        <img src="{{ url_for('static', filename='IMAGE/logo_isen.jpg') }}" alt="House" style="width: 19%"/>
+        </a>
+        <a href="https://eseo.fr/je-m-oriente/mon-campus/angers/">
+        <img src="{{ url_for('static', filename='IMAGE/logo_eseo.jpg') }}" alt="House" style="width: 19%"/>
+        </a>
+        <a href="https://eseo.fr/je-m-oriente/mon-campus/angers/">
+        <img src="{{ url_for('static', filename='IMAGE/logo_insa.jpg') }}" alt="House" style="width: 19%"/>
+       </a>
+    </div>
+      <!-- End page content -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-center w3-black w3-padding-16">
+      <p>
+        Powered by
+        <a
+          href="https://nimbusgateway.ie/"
+          title="Nimbus Gateway"
+          target="_blank"
+          class="w3-hover-text-green"
+          >Nimbus</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>

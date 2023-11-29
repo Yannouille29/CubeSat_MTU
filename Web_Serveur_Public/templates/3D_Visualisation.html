@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>3D Visualisation</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/3D_Visualisation.css') }}" />
+    
+  </head>
+  <body>
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+      <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+        <a href="/index" class="w3-bar-item w3-button"
+          ><b>CubeSat</b> Home</a
+        >
+        <!-- Float links to the right. Hide them on small screens -->
+        <div class="w3-right w3-hide-small">
+          <a href="#projects" class="w3-bar-item w3-button">Projects</a>
+          <a href="#about" class="w3-bar-item w3-button">Author</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header
+      class="w3-display-container w3-content w3-wide"
+      style="max-width: 1500px"
+      id="home"
+    >
+      <img
+        class="w3-image"
+        src="{{ url_for('static', filename='IMAGE/Capture3.png') }}"
+        alt="Architecture"
+        width="1500"
+        height="800"
+      />
+      <div class="w3-display-middle w3-margin-top w3-center">
+        <h1 class="w3-xxlarge w3-text-white">
+          <span class="w3-padding w3-black w3-opacity-min"><b>3D VISUALISATION</b></span>
+          <span class="w3-hide-small w3-text-light-grey">CUBESAT</span>
+        </h1>
+      </div>
+    </header>
+
+    <!-- Page content -->
+    <div class="w3-content w3-padding" style="max-width: 1564px">
+      <!-- Project Section -->
+      <div class="w3-container w3-padding-32" id="projects">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Images of Project
+        </h3>
+      </div>
+
+      <div class="w3-row-padding">
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-display-container">
+            <div class="w3-display-topleft w3-black w3-padding">
+              1er Visualisation
+            </div>
+
+              <img
+                src="{{ url_for('static', filename='IMAGE/visu_nimbus.jpg') }}"
+                alt="House"
+                style="width: 100%"
+              />
+
+          </div>
+        </div>
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-display-container">
+            <div class="w3-display-topleft w3-black w3-padding">
+              Other Visualisation
+            </div>
+
+              <img src="{{ url_for('static', filename='IMAGE/video_visu.jpg') }}" alt="House" style="width: 100%" />
+
+          </div>
+        </div>
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-display-container">
+            <div class="w3-display-topleft w3-black w3-padding">
+                Code Processing
+            </div>
+
+              <img
+                src="{{ url_for('static', filename='IMAGE/code_processing.jpg') }}"
+                alt="House"
+                style="width: 100%;
+                border-top-width: 1px;
+                border-top-style: solid;
+                border-left-width: 1px;
+                border-left-style: solid;
+                border-bottom-width: 1px;
+                border-bottom-style: solid;
+                border-right-width: 1px;
+                border-right-style: solid;
+                border-block-color: #d2cdcd;
+                border-left-color: #d2cdcd;
+                border-right-color: #d2cdcd;"
+              />
+
+          </div>
+        </div>
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-display-container">
+            <div class="w3-display-topleft w3-black w3-padding">
+              Visualisation Matlab
+            </div>
+
+              <img src="{{ url_for('static', filename='IMAGE/matlab_simu.jpg') }}" alt="House" style="width: 100%;
+              border-top-width: 1px;
+              border-top-style: solid;
+              border-left-width: 1px;
+              border-left-style: solid;
+              border-bottom-width: 1px;
+              border-bottom-style: solid;
+              border-right-width: 1px;
+              border-right-style: solid;
+              border-block-color: #d2cdcd;
+              border-left-color: #d2cdcd;
+              border-right-color: #d2cdcd;" />
+
+          </div>
+        </div>
+      </div>
+
+      <!-- About Section -->
+      <div class="w3-container w3-padding-32" >
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Introduction :
+        </h3>
+        <p>
+          In our endeavor to enhance the basic CubeSat, one aspect appears somewhat challenging to implement, which is the real-time or near-real-time visualization of the CubeSat's orientation. This would provide an added convenience to the user, enabling them to directly assess if the orientation is still suitable, especially for tasks such as taking photos, for instance.
+        </p>
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Understanding How :
+        </h3>
+        <p>
+          Implementing this improvement doesn't seem so complex because we already have all the necessary components at our disposal. The only elements that will need to be changed are the various software components. Indeed, our main sensor, upon which all measurements will rely, will be our gyroscope integrated into the MPU5060. This will allow us to accurately determine the CubeSat's positions on the X/Y/Z axes.
+        </p>
+        <div>
+            <img src="{{ url_for('static', filename='IMAGE/pi_4.jpg') }}" alt="House" style="width: 19%"/>
+            <img src="{{ url_for('static', filename='IMAGE/Speed Control.gif') }}" alt="House" style="width: 19%"/>
+            <img src="{{ url_for('static', filename='IMAGE/raspberry.jpg') }}" alt="House" style="width: 19%"/>
+            <img src="{{ url_for('static', filename='IMAGE/sparkfun.jpg') }}" alt="House" style="width: 19%"/>
+            <img src="{{ url_for('static', filename='IMAGE/MPU.png') }}" alt="House" style="width: 19%"/>
+        </div>
+        <p>
+          So, in the first step, we just need to modify the code in the Sparkfun Arduino to retrieve X/Y/Z coordinates accurately, which are not supported in the basic Arduino code. In our case, readily available codes from the internet allowed us to conduct initial tests, revealing issues related to slippage, which were subsequently addressed (all the code is available and commented in the 'Github' tab at the bottom of the page). The second software to be modified is the one managing images stored on the SD card of the Raspberry Pi 0, which, after studying the code, doesn't appear to be as challenging to implement (also available in a commented version on Github).
+        </p>
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Implementation of the first 3D visualization : 
+        </h3>
+        <p>
+          Before beginning a live visualization accessible through the website, as planned in the final rendering, we start with simpler methods and more available sources. This involves getting the Processing application to work with a code created for this purpose (available on GitHub), built upon the modified Arduino code. 
+        </p>
+        <div class="code-container">
+          <pre>
+              <code>
+  //-------------------------------------------------------------------------------
+  //-------------------------------Arduino Software--------------------------------
+  //-------------------------------------------------------------------------------
+  //-----------------------For 3D and only in serial monitor-----------------------
+  //-------------------------------------------------------------------------------
+                
+  // === Read acceleromter data === //
+                  
+  Wire.beginTransmission(MPU);
+  Wire.write(0x3B);                                                                         // Start with register 0x3B (ACCEL_XOUT_H)
+  Wire.endTransmission(false);
+  Wire.requestFrom(MPU, 6, true);                                                           // Read 6 registers total, each axis value is stored in 2 registers
+                  
+  //For a range of +-2g, we need to divide the raw values by 16384, according to the datasheet
+  AccX = (Wire.read() << 8 | Wire.read()) / 16384.0;                                        // X-axis value
+  AccY = (Wire.read() << 8 | Wire.read()) / 16384.0;                                        // Y-axis value
+  AccZ = (Wire.read() << 8 | Wire.read()) / 16384.0;                                        // Z-axis value
+                  
+  // Calculating Roll and Pitch from the accelerometer data
+  accAngleX = (atan(AccY / sqrt(pow(AccX, 2) + pow(AccZ, 2))) * 180 / PI) - 0.58;           // AccErrorX ~(0.58) See the calculate_IMU_error()custom function for more details
+  accAngleY = (atan(-1 * AccX / sqrt(pow(AccY, 2) + pow(AccZ, 2))) * 180 / PI) + 1.58;      // AccErrorY ~(-1.58)
+                  
+  // === Read gyroscope data === //
+                  
+  previousTime = currentTime;                                                               // Previous time is stored before the actual time read
+  currentTime = millis();                                                                   // Current time actual time read
+  elapsedTime = (currentTime - previousTime) / 1000;                                         // Divide by 1000 to get seconds - better by 500 for the 3D view
+  Wire.beginTransmission(MPU);
+  Wire.write(0x43);                                                                         // Gyro data first register address 0x43
+  Wire.endTransmission(false);
+  Wire.requestFrom(MPU, 6, true);                                                           // Read 4 registers total, each axis value is stored in 2 registers
+  GyroX = (Wire.read() << 8 | Wire.read()) / 131.0;                                         // For a 250deg/s range we have to divide first the raw value by 131.0
+  GyroY = (Wire.read() << 8 | Wire.read()) / 131.0;
+  GyroZ = (Wire.read() << 8 | Wire.read()) / 131.0;
+                  
+  // Correct the outputs with the calculated error values
+  GyroX = GyroX + 0.56;                                                                     // GyroErrorX ~(-0.56)
+  GyroY = GyroY - 2;                                                                        // GyroErrorY ~(2)
+  GyroZ = GyroZ + 0.79;                                                                     // GyroErrorZ ~ (-0.8)
+                  
+  double gyroChange = abs(GyroX) + abs(GyroY);
+                
+  // Update the angles based on the gyroscopes only if the change exceeds the threshold.
+  if (gyroChange > gyroThreshold) {
+    //yaw = yaw + GyroZ * elapsedTime;
+    pitch = pitch + GyroY * elapsedTime;
+    roll = roll + GyroX * elapsedTime;
+  }
+  yaw =  yaw + GyroZ * elapsedTime;
+                
+  // Correct the angles to prevent accumulation.
+  //yaw = yaw - previousYaw;
+  pitch = pitch - previousPitch;
+  roll = roll - previousRoll;
+                
+  // Update the previous values for the next iteration.
+  previousYaw = GyroZ * elapsedTime;
+  previousPitch = GyroY * elapsedTime;
+  previousRoll = GyroX * elapsedTime;
+                
+  // Complementary filter - combine acceleromter and gyro angle values
+  roll = (0.96 * roll + 0.04 * accAngleX);
+  pitch = (0.96 * pitch + 0.04 * accAngleY);
+                
+                  
+  // Print the values on the serial monitor
+  Serial.print(roll);
+  Serial.print("/");
+  Serial.print(pitch);
+  Serial.print("/");
+  Serial.println(yaw);
+  }
+  
+  //-----------------------calculate_IMU_error for 3D----------------------------
+  
+  void calculate_IMU_error() {
+    // We can call this funtion in the setup section to calculate the accelerometer and gyro data error. 
+    // From here we will get the error values used in the above equations printed on the Serial Monitor.
+    // Note that we should place the IMU flat in order to get the proper values, so that we then can the correct values
+    // Read accelerometer values 200 times
+  
+    while (c < 200) {
+      Wire.beginTransmission(MPU);
+      Wire.write(0x3B);
+      Wire.endTransmission(false);
+      Wire.requestFrom(MPU, 6, true);
+      AccX = (Wire.read() << 8 | Wire.read()) / 16384.0 ;
+      AccY = (Wire.read() << 8 | Wire.read()) / 16384.0 ;
+      AccZ = (Wire.read() << 8 | Wire.read()) / 16384.0 ;
+      // Sum all readings
+      AccErrorX = AccErrorX + ((atan((AccY) / sqrt(pow((AccX), 2) + pow((AccZ), 2))) * 180 / PI));
+      AccErrorY = AccErrorY + ((atan(-1 * (AccX) / sqrt(pow((AccY), 2) + pow((AccZ), 2))) * 180 / PI));
+      c++;
+    }
+  
+    //Divide the sum by 200 to get the error value
+    AccErrorX = AccErrorX / 200;
+    AccErrorY = AccErrorY / 200;
+    c = 0;
+  
+    // Read gyro values 200 times
+    while (c < 200) {
+      Wire.beginTransmission(MPU);
+      Wire.write(0x43);
+      Wire.endTransmission(false);
+      Wire.requestFrom(MPU, 6, true);
+      GyroX = Wire.read() << 8 | Wire.read();
+      GyroY = Wire.read() << 8 | Wire.read();
+      GyroZ = Wire.read() << 8 | Wire.read();
+      // Sum all readings
+      GyroErrorX = GyroErrorX + (GyroX / 131.0);
+      GyroErrorY = GyroErrorY + (GyroY / 131.0);
+      GyroErrorZ = GyroErrorZ + (GyroZ / 131.0);
+      c++;
+    }
+  
+    //Divide the sum by 200 to get the error value
+  
+    GyroErrorX = GyroErrorX / 200;
+    GyroErrorY = GyroErrorY / 200;
+    GyroErrorZ = GyroErrorZ / 200;
+  
+    // Print the error values on the Serial Monitor
+    Serial.print("AccErrorX: ");
+    Serial.println(AccErrorX);
+    Serial.print("AccErrorY: ");
+    Serial.println(AccErrorY);
+    Serial.print("GyroErrorX: ");
+    Serial.println(GyroErrorX);
+    Serial.print("GyroErrorY: ");
+    Serial.println(GyroErrorY);
+    Serial.print("GyroErrorZ: ");
+    Serial.println(GyroErrorZ);
+  }
+              </code>
+          </pre>
+      </div>
+      <p>
+        
+      </p>
+          <div class="code-container">
+            <pre>
+  <code>
+  //-------------------------------------------------------------------------------
+  //---------------------------------Processing------------------------------------
+  //-------------------------------------------------------------------------------
+  
+    import processing.serial.*;
+    import java.awt.event.KeyEvent;
+    import java.io.IOException;
+    
+    Serial myPort;
+    String data = "";
+    float roll = 0, pitch = 0, yaw = 0; // Initialisation à zéro
+    
+    color[] faceColors; // Tableau de couleurs pour chaque face du cube
+    
+    void setup() {
+      size(800, 800, P3D);
+      myPort = new Serial(this, "COM3", 19200); // Démarre la communication série
+      myPort.bufferUntil('\n');
+    
+      faceColors = new color[6];
+      faceColors[0] = color(255, 0, 0);    // Rouge
+      faceColors[1] = color(0, 255, 0);    // Vert
+      faceColors[2] = color(0, 0, 255);    // Bleu
+      faceColors[3] = color(255, 255, 0);  // Jaune
+      faceColors[4] = color(0, 255, 255);  // Cyan
+      faceColors[5] = color(255, 0, 255);  // Magenta
+    }
+    
+    void draw() {
+      background(300);
+      translate(width / 2, height / 2, 0);
+    
+      // Appliquer les rotations basées sur les données de cap
+      rotateX(radians(-pitch));
+      rotateZ(radians(roll));
+      rotateY(radians(yaw));
+    
+      // Afficher le cube avec des faces de couleurs différentes
+      drawColoredCube();
+    
+      // Afficher le texte
+      fill(255);
+      textSize(30);
+      scale(-1, 1, 1);
+      text("Nimbus Cubesat", -100, 0, -126);
+    }
+    
+    void drawColoredCube() {
+      float size = 250;
+    
+      beginShape();
+      fill(faceColors[0]);
+      vertex(-size/2, -size/2, -size/2);
+      vertex( size/2, -size/2, -size/2);
+      vertex( size/2,  size/2, -size/2);
+      vertex(-size/2,  size/2, -size/2);
+      endShape(CLOSE);
+    
+      beginShape();
+      fill(faceColors[1]);
+      vertex( size/2, -size/2, -size/2);
+      vertex( size/2, -size/2,  size/2);
+      vertex( size/2,  size/2,  size/2);
+      vertex( size/2,  size/2, -size/2);
+      endShape(CLOSE);
+    
+      beginShape();
+      fill(faceColors[2]);
+      vertex( size/2, -size/2,  size/2);
+      vertex(-size/2, -size/2,  size/2);
+      vertex(-size/2,  size/2,  size/2);
+      vertex( size/2,  size/2,  size/2);
+      endShape(CLOSE);
+    
+      beginShape();
+      fill(faceColors[3]);
+      vertex(-size/2, -size/2,  size/2);
+      vertex(-size/2, -size/2, -size/2);
+      vertex(-size/2,  size/2, -size/2);
+      vertex(-size/2,  size/2,  size/2);
+      endShape(CLOSE);
+    
+      beginShape();
+      fill(faceColors[4]);
+      vertex(-size/2, -size/2, -size/2);
+      vertex( size/2, -size/2, -size/2);
+      vertex( size/2, -size/2,  size/2);
+      vertex(-size/2, -size/2,  size/2);
+      endShape(CLOSE);
+    
+      beginShape();
+      fill(faceColors[5]);
+      vertex(-size/2,  size/2, -size/2);
+      vertex( size/2,  size/2, -size/2);
+      vertex( size/2,  size/2,  size/2);
+      vertex(-size/2,  size/2,  size/2);
+      endShape(CLOSE);
+    }
+    
+    void serialEvent(Serial myPort) {
+      data = myPort.readStringUntil('\n');
+      if (data != null) {
+        data = trim(data);
+        String items[] = split(data, '/');
+        if (items.length > 1) {
+          roll = float(items[0]);
+          pitch = float(items[1]);
+          yaw = float(items[2]);
+        }
+      }
+    }
+  </code>
+              </pre>
+        </div>
+        <p>
+          After numerous modifications, it now works perfectly. So, all that is needed is to launch Processing and the code to immediately have the visualization, as shown below.
+        </p>
+        <div class="video-container" >
+        <video controls>
+          <source src="{{ url_for('static', filename='IMAGE/test-visu_37XhSB6w.mp4') }}" type="video/mp4">
+        </video>
+      </div>
+
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Shortcoming of the first method :
+        </h3>
+        <p>
+          This application is interesting to get a first idea of what the visualization can look like, but it has significant issues, such as the wired connection required for Processing to function properly. This is unthinkable for the future; therefore, it is necessary to establish communication between the Arduino code, the Raspberry Pi 0 code, and the ground station responsible for transmitting to the website.
+        </p>
+        <p>
+          At our current stage, it is possible to directly retrieve the data and send it to the ground station, but a significant part of the process involving the website remains.
+        </p>
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Software issues encountered :
+        </h3>
+        <p>
+          The first issue that arose and caused us to lose time was related to the ground station, which suddenly refused to display or process the received data, even though communication was established with the CubeSat. After spending time searching for solutions in every possible way, we realized that the problem was solely related to the Raspberry Pi being used at that time, which was a version 3. We then realized that it worked again, but only on the Raspberry Pi 4.
+        </p>
+        <p>
+          Our second issue was the drift, meaning that our X/Y/Z positions were constantly increasing, thus distorting the accuracy of our simulation. The problem was resolved in the Arduino code by only counting a real change in value when it fell outside a certain range of values (initially, the desire for high precision was actually disrupting the measurements).
+        </p>
+        <p>
+          Also, be careful that when making a software change on the Raspberry Pi 0, don't forget to use the 'upload' command to ensure that the improvement is properly applied.
+        </p>
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Best solution :
+        </h3>
+        <p>
+          In response to previous constraints, we have developed an enhanced solution: real-time display of the cubesat's position on our website. Users can now view the updated position every 3 to 5 seconds, providing a dynamic and accurate experience. But considering a likely lack of optimization in data transmission, the refresh/update is done with a delay of 20 to 30 seconds.
+        </p>
+        <p>
+          It's important to note that the software, FoxTelem, we use establishes communication with the cubesat, enabling near real-time data reception. When observing the software, we can witness the data exchange occurring, and the "payload" counter increasing approximately every 3 seconds. This represents the intervals for updating the data transmitted by the cubesat.
+        </p>
+        <p>
+          FoxTelem generates a .log file with a changing name, containing a string of comma-separated characters. This string can include information such as the coordinates after some modifications in the Arduino code. The file updates with each payload incrementation, providing a log of these details. Hence, we'll leverage this feature for our purposes.
+        </p>
+        <p>
+          We've set up two Python scripts: one on the Raspberry Pi and the other on the NUC, serving as a Flask server. The Raspberry Pi script likely collects and processes cubesat data through FoxTelem and the .log file. The Flask server script on the NUC manages data display and updates on the website for user access.
+        </p>
+
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Visualisation in real time / Simulation :
+        </h3>
+
+        <p>
+          We are in a situation here where our website does not yet support real-time visualization. However, real-time visualization is possible locally if you follow the instructions on the Github at the bottom of the page. In this case, the website version will be compatible with the .js and will allow real-time visualization.
+        </p>
+        <p>
+          The following video is suggested to replace the real-time visualization available only locally with something that allows viewing how the RW CubeSat is designed and a visualization on the X-axis rotation initially and then on the Z-axis.
+        </p>
+        
+        <video controls style="border: 2px solid black;" width="100%">
+          <source src="{{ url_for('static', filename='IMAGE/Assemblage4.mp4') }}" type="video/mp4"  >
+        </video>
+
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Real-time data table for local version :
+        </h3>
+
+        <div id="table-container">
+          <div class="table-wrapper">
+          <table id="data-table">
+              <thead>
+                  <tr>
+                      <th>Time of reception</th>
+                      <th>??</th>
+                      <th>Epoch</th>
+                      <th>Uptime</th>
+                      <th>Type</th>
+                      <th>Batt_A_V</th>
+                      <th>Batt_B_V</th>
+                      <th>Batt_V</th>
+                      <th>Acceleration X Axis</th>
+                      <th>Acceleration Y Axis</th>
+                      <th>Acceleration Z Axis</th>
+                      <th>Total_Batt_I</th>
+                      <th>Temperature</th>
+                      <th>Panel_Plus_X_V</th>
+                      <th>Panel_Minus_X_V</th>
+                      <th>Panel_Plus_Y_V</th>
+                      <th>Panel_Minus_Y_V</th>
+                      <th>Panel_Plus_Z_V</th>
+                      <th>Panel_Minus_Z_V</th>
+                      <th>Panel_Plus_X_I</th>
+                      <th>Panel_Minus_X_I</th>
+                      <th>Panel_Plus_Y_I</th>
+                      <th>Panel_Minus_Y_I</th>
+                      <th>Panel_Plus_Z_I</th>
+                      <th>Panel_Minus_Z_I</th>
+                      <th>PSUVoltage</th>
+                      <th>SPIN</th>
+                      <th>Pressure</th>
+                      <th>Altitude</th>
+                      <th>Resets</th>
+                      <th>RSSI</th>
+                      <th>IHUTemperature</th>
+                      <th>X Axis Angular Velocity</th>
+                      <th>Y Axis Angular Velocity</th>
+                      <th>Z Axis Angular Velocity</th>
+                      <th>Humidity</th>
+                      <th>PSUCurrent</th>
+                      <th>Sensor1</th>
+                      <th>Sensor2</th>
+                      <th>STEMPayloadStatus</th>
+                      <th>SafeMode</th>
+                      <th>SimulatedTelemetry</th>
+                      <th>PayloadStatus1</th>
+                      <th>I2CBus0Failure</th>
+                      <th>I2CBus1Failure</th>
+                      <th>I2CBus3Failure</th>
+                      <th>CameraFailure</th>
+                      <th>GroundCommands</th>
+                      <th>RXAntenna</th>
+                      <th>TXAntenna</th>
+                      <th>PAD</th>
+                  </tr>
+              </thead>
+              <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <p>
+        Similarly, for this table, it will only update on the local version that you can install by following the Github instructions. In the local version communicating with the ground station on the same Wi-Fi, we have three lines of data that update automatically with the information received from FoxTelem.
+      </p>
+
+      <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+        Real-time sensor information for local version :
+      </h3>
+
+      <div class="container3">
+        <div class="fifth">
+          <img class="img2" src="{{ url_for('static', filename='IMAGE/thermo.png') }}">
+          <div class="overlay1" id="thermometer">
+            <div id="mercury"></div>
+          </div>
+        </div>
+        <div class="fifth">
+          <img class="img2" src="{{ url_for('static', filename='IMAGE/Batterie.png') }}">
+          <div class="overlay2" id="batterievide">
+              <div id="batterieplein"></div>
+          </div>
+        </div>
+        <div class="fifth">
+          <img class="img2" src="{{ url_for('static', filename='IMAGE/Goutte.png') }}">
+          <div class="overlay3" id="drop">
+            <div id="water"></div>
+          </div>
+        </div>
+        <div class="fifth">
+          <img class="img2" src="{{ url_for('static', filename='IMAGE/Compteur.png') }}">
+          <div class="overlay4" id="arrow"></div>
+        </div>
+        <div class="fifth">
+          <img class="img2" src="{{ url_for('static', filename='IMAGE/Altitude.png') }}">
+          <div class="overlay5" id="alti">
+            <div id="mont"></div>
+          </div>
+      </div>  
+    </div>     
+
+    <p>
+      Similarly, for these pictograms, they will only update on the local version that you can install by following the Github instructions. In the local version communicating with the ground station on the same Wi-Fi, we have all these pictograms updating according to the data retrieved by FoxTelem in real-time.
+    </p>
+      
+      <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+        Quick explanation of how it works on local version : 
+      </h3>
+      
+      <p>
+        Without delving into details, on the ground station side, we've simply set up a service to launch the Python script we've created named 'Rasp.py' upon startup. If not the case, please follow the command lines below. As for the script launching the Flask server, currently, it's manually initialized on PCs for testing purposes, but the ultimate goal is to place it permanently on the NUK.
+      </p>
+      <p>
+        To make the whole process more visual, the script launching the server also updates real-time data reception in the 'donnees.txt' file.
+      </p>
+      <p>
+      Subsequently, we utilize the three.js library to render a 3D visualization of our cubesat. Each face is assigned its appropriate image, although the ideal scenario would have been to directly include the .stl file imported from SolidWorks (which we encountered issues with during import). The position updates according to the data in the received file 'donnees.txt,' and the cube's orientation is determined by three different positions.
+      </p>
+      <p>
+        It is crucial to note that both the ground station and the Flask server on a PC must have the same Wi-Fi connection. Make sure to modify the respective lines in each of the two documents according to the network being used before launching them.
+      </p>
+      <p>
+        Also, please be attentive to modifying the name of the .log document, which sometimes changes based on whether we have manipulated certain parameters in FoxTelem, such as 'delete Payload,' for instance. Once the name is changed, repeat the process of launching the service on the ground station for it to function properly.
+      </p>
+      <p>
+        The data transcribed as-is in the real-time table is the information sent by the ground station; it is not processed except for the small updateable diagrams, which take into account the transformed value
+      </p>
+
+
+      <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Conclusion :
+      </h3>  
+        <p>
+          Through our research, we've made incremental progress towards achieving real-time visualization of our cubesat. We've attained a respectable outcome, albeit with an unoptimized latency time that has yet to reach its full potential.
+        </p>
+              
+      </div>
+
+      <h3 class="w3-border-bottom w3-border-light-black w3-padding-16" id="about"></h3>
+
+      <div class="w3-row-padding w3-grayscale">
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <a href="https://www.linkedin.com/in/yann-huguet-7a4a2124a/">
+            <img
+              src="{{ url_for('static', filename='IMAGE/Yann_Img_2.jpg') }}"
+              alt="House"
+              style="width: 100%"
+            />
+          </a>
+        </div>
+        <div class="w3-col l9 m6 w3-margin-bottom">
+          <h3 texte-color : #fff>Yann Huguet</h3>
+          <p class="w3-opacity">Intern INSA 2023</p>
+          <div class="w3-col l20 m20 w3-margin-bottom">
+          <p>
+            A French student completing his 4th-year internship at Nimbus for a
+            duration of 5 months as part of his alternating engineering studies,
+            specializing in advanced electronics and computer science. Yann's
+            engineering school is located in Rennes, France.
+          </p>
+          <p>
+          Having experience in electronics through internships in electronics 
+          and currently, a two-year apprenticeship with a leading French electronics 
+          company named Thales, Yann has chosen this path for the new aspects it 
+          offers, such as optimizing the operating conditions of a cubesat based on new software elements.
+        </p>
+        <p>
+        Yann initiated the project and developed an initial prototype, but there are still improvements
+         to finalize the core idea that can be further refined by future interns.
+      </p>
+      </div>
+          <p>
+            <a href="mailto:yannpije@gmail.com?subject=Question%20Cubesat">
+              <button class="w3-button w3-light-grey w3-block">Contact</button>
+            </a>
+          </p>
+
+        </div>
+        
+      </div>
+
+      <h3 class="w3-border-bottom w3-border-light-black w3-padding-16"></h3>
+
+      <!-- Contact Section -->
+      <div class="w3-container w3-padding-32" id="contact">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+            Some Links
+        </h3>
+        <p>Different sources to better understand the project as a whole.</p>
+        
+        <div class="links">
+            <div class="link-item">
+              <a href="https://en.wikipedia.org/wiki/Reaction_wheel" target="_blank">
+                <img src="{{ url_for('static', filename='IMAGE/Wikipedia-Logo.png') }}" alt="Yann" style="width: 100%" />
+            </a>
+            </div>
+            <div class="link-item">
+              <a
+                href="/Youtube_Link_3D"
+                target="_blank"
+                ><img src="{{ url_for('static', filename='IMAGE/Youtube-logo-png.png') }}" alt="Yann" style="width: 100%" /></a
+              >
+            </div>
+            <div class="link-item">
+              <a
+                href="/Project_Link_3D"
+                target="_blank"
+                ><img src="{{ url_for('static', filename='IMAGE/project.png') }}" alt="Yann" style="width: 100%" /></a
+              >
+            </div>
+            <div class="link-item">
+              <a href="https://github.com/Yannouille29/CubeSat_MTU.git" target="_blank"
+                ><img src="{{ url_for('static', filename='IMAGE/GitHub-Logo.png') }}" alt="Yann" style="width: 100%" /></a
+              >
+            </div>
+          </div>
+
+          <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"></h3>
+
+      <!-- Image of location/map -->
+      <div class="w3-container">
+        <a href="https://www.insa-rennes.fr/index.html" target="_blank">
+        <img
+          src="{{ url_for('static', filename='IMAGE/Accueil_INSA_Rennes.jpg') }}"
+          class="w3-image"
+          style="width: 100%"
+        />
+      </a>
+      </div>
+
+      <!-- End page content -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-center w3-black w3-padding-16">
+      <p>
+        Powered by
+        <a
+          href="https://nimbusgateway.ie/"
+          title="Nimbus Gateway"
+          target="_blank"
+          class="w3-hover-text-green"
+          >Nimbus</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>

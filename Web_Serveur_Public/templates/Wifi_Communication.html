@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wifi Communication</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Reaction_Wheels.css') }}" />
+  </head>
+  <body>
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+      <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+        <a href="/index" class="w3-bar-item w3-button"
+          ><b>CubeSat</b> Home</a
+        >
+        <!-- Float links to the right. Hide them on small screens -->
+        <div class="w3-right w3-hide-small">
+          <a href="#projects" class="w3-bar-item w3-button">Projects</a>
+          <a href="#about" class="w3-bar-item w3-button">Author</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header
+      class="w3-display-container w3-content w3-wide"
+      style="max-width: 1500px"
+      id="home"
+    >
+      <img
+        class="w3-image"
+        src="{{ url_for('static', filename='IMAGE/Capture4.png') }}"
+        alt="Architecture"
+        width="1500"
+        height="800"
+      />
+      <div class="w3-display-middle w3-margin-top w3-center">
+        <h1 class="w3-xxlarge w3-text-white">
+          <span class="w3-padding w3-black w3-opacity-min"><b>WIFI COMMUNICATION</b></span>
+          <span class="w3-hide-small w3-text-light-grey">CUBESAT</span>
+        </h1>
+      </div>
+    </header>
+
+    <!-- Page content -->
+    <div class="w3-content w3-padding" style="max-width: 1564px">
+      <!-- Project Section -->
+      <div class="w3-container w3-padding-32" id="projects">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          description
+        </h3>
+      </div>
+
+      <div class="w3-row-padding">
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-display-container">
+            <div class="w3-display-topleft w3-black w3-padding">
+              Cluster launch 
+            </div>
+
+              <img
+                src="{{ url_for('static', filename='IMAGE/Swarm2.jpg') }}"
+                alt="House"
+                style="width: 100%"
+              />
+
+          </div>
+        </div>
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-display-container">
+            <div class="w3-display-topleft w3-black w3-padding">
+              CubeSat Swarm
+            </div>
+
+              <img src="{{ url_for('static', filename='IMAGE/Swarm.jpg') }}" alt="House" style="width: 100%" />
+
+          </div>
+        </div>
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-display-container">
+            <div class="w3-display-topleft w3-black w3-padding">
+              GAMALINK Project
+            </div>
+
+              <img
+                src="{{ url_for('static', filename='IMAGE/Gamalink_CubeSat.png') }}"
+                alt="House"
+                style="width: 100%;
+                border-top-width: 1px;
+                border-top-style: solid;
+                border-left-width: 1px;
+                border-left-style: solid;
+                border-bottom-width: 1px;
+                border-bottom-style: solid;
+                border-right-width: 1px;
+                border-right-style: solid;
+                border-block-color: #d2cdcd;
+                border-left-color: #d2cdcd;
+                border-right-color: #d2cdcd;"
+              />
+
+          </div>
+        </div>
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-display-container">
+            <div class="w3-display-topleft w3-black w3-padding">
+              Software
+            </div>
+
+              <img src="{{ url_for('static', filename='IMAGE/RaspAP.JPG') }}" alt="House" style="width: 100%;
+              border-top-width: 1px;
+              border-top-style: solid;
+              border-left-width: 1px;
+              border-left-style: solid;
+              border-bottom-width: 1px;
+              border-bottom-style: solid;
+              border-right-width: 1px;
+              border-right-style: solid;
+              border-block-color: #d2cdcd;
+              border-left-color: #d2cdcd;
+              border-right-color: #d2cdcd;" />
+
+          </div>
+        </div>
+      </div>
+
+      <!-- About Section -->
+      <div class="w3-container w3-padding-32">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Introduction :
+        </h3>
+        <p>
+          Before I get into sending data, I need to look at a few key points:<br><br>
+            <b>1. Raspberry Pi Zero Emission Frequency: </b>
+              The Raspberry Pi Zero emits at a frequency of 2.4 GHz, a parameter inherent in its design.<br><br>
+            <b>2. Distinction between Transmission, Propagation and Transfer Times: </b>
+              <ul>
+                <li>The propagation time is influenced by the distance and speed of the transmission medium (measured in µs or ms).</li>
+                <li>Transmission time is the time it takes to send a packet from the transmitter to the receiver, excluding waiting times (expressed in seconds or fractions).</li>
+                <li>Transfer time encompasses both transmission and propagation time (measured in seconds or fractions).</li>
+              </ul>
+          For this study, I base myself on the following elements:<br><br>
+              <b>1. Simplification hypothesis: </b>
+               The Earth is considered a perfect sphere, allowing to consider the distance between two CubeSats as a straight line.<br><br>
+              <b>2. Low Earth Orbit (LEO): </b>
+               The CubeSats are in low orbit about 160 km above the Earth’s surface, avoiding the effects of atmospheric friction.<br><br>
+              <b>3. Data Size for the Study: </b>
+                Example: A hyperspectral image has a size of 140 Mbits. When transmitted over a 6 CubeSats network, the packet size is 23 Mbits (140 Mbits/6 = 23 Mbits).<br><br>
+          <b><u> A - Study of the data transmission of a CubeSat</u></b><br><br>
+            <b>1. Purpose of the Study: </b>
+              Calculate the time required for the transmission of a 23 Mbits packet in a CubeSats network.<br><br>
+            <b>2. Transmission Time Table: </b>
+              The table analyzes the ratio between the transmitted data rate (in kbps) and the transmission time (in seconds) of a packet.<br><br>
+            <b>3. Data Required for the Table: </b>
+              <ul>
+                <li>Data transmission rate: from 1 Mbps to 70 Mbps.</li>
+                <li>Maximum package size: 23 Mbits.</li>
+              </ul>
+            <b>4. Formula Used: </b>
+              Tt = Number of bits/ Bit rate, with Tt: transmission time (s), Number of bits (bits) and Bit rate(bps).<br><br>
+            <b>5. Assumptions to Simplify Calculations: </b>
+              It is assumed that the transmission is error-free and continuous (without interruption).<br><br>
+            <b>6. Comments on High Transmission Times: </b>
+              It is noted that transmission times greater than 1000 seconds are excessively long and impractical for most missions.<br><br>
+            <b>7. Choice of Optimal Speed: </b>
+              <ul>
+                <li>The optimal time is 460 seconds with a transmission speed of 50 kbps.</li>
+                <li>The transmission speed of 50 kbps is considered slow enough to ensure reliable data transmission even in less favorable environments.</li>
+              </ul>
+          <img src="{{ url_for('static', filename='IMAGE/Table_Tansmission_23Mb.png') }}" alt="Table_Tansmission_23Mb.png" title="Table of the time taken by the transmission of a 23Mbits packet by a CubeSat"><br><br>
+        <b><u> B - Transfer study between two CubeSats</u></b><br><br>
+            <b>1. Purpose of the Study: </b>
+              Analyze the propagation and transfer time according to the distance between two CubeSats.<br><br>
+            <b>2. Data Required for the Table: </b>
+              <ul>
+                <li>Optimal transmission time: 460 s.</li>
+                <li>Propagation speed of a radio wave (close to that of light): 300,000 km/s.</li>
+              </ul>
+            <b>3. Formulas Used: </b>
+              <ul>
+              <li>Tp = d / v, with Tp: propagation time (s), d: distance (km) and v: propagation speed (km/s).</li>
+              <li>Total emission time (Te): Te = Tp + transmission time (Tt), with Te: total emission time (s), Tp: propagation time (s), Tt: transfer time (s).</li>
+            </ul>
+          <b>4. Transfer Time Table: </b>
+            The table shows that the propagation time increases proportionally to the distance between the CubeSats.<br><br>
+          <b>5. Constant Transmission Time: </b>
+            The transmission time between CubeSats remains constant at 460 seconds.<br><br>
+          <b>6. Comparison between Propagation and Transmission Time: </b>
+            The propagation time is very small compared to the transmission time. Thus, for short distances, the propagation time can be neglected.<br><br>
+          <b>7. Simplification of Total Emission Time: </b>
+            The total time for data transmission is equal to the transmission time (460 seconds).<br><br>
+            <img src="{{ url_for('static', filename='IMAGE/Transfer_Time_Table.png') }}" alt="Transfer_Time_Table.png" title="Transfer time table according to distance between CubeSats"><br><br>
+        <b><u>C - Study of data transmission between a CubeSat and a ground station</u></b><br><br>
+          To send a CubeSat packet to the ground station I go through the radio antenna that uses the UHF band.<br>
+            
+          The UHF band is the official term for radio frequencies from 300 to 3,000 MHz.<br>
+          However, for technical constraints my radio antenna transmits with a frequency of 433MHz.<br><br>
+            
+          <b><u>a) Calculating the transmission time of a 23 Mbits packet</u></b><br><br>
+            <b>1. Purpose of the Study: </b>
+            Analyze the transmission time of a packet according to the data transfer rate.<br><br>
+            <b>2. Data Required for the Table:</b>
+            Weight of a package to transmit: 23 Mbits.<br><br>
+            <b>3. Formula Used: </b>
+            Tt = Number of bits/ Bit rate, with Tt: transmission time (s), Number of bits (bits) and Bit rate(bps).<br><br>
+            <b>4. Assumptions to Simplify Calculations: </b>
+            It is assumed that the transmission is error-free and continuous (without interruption).<br><br>
+            <b>Transmission Time Table:</b>
+            The table shows a decrease in transfer time as the transmission speed increases. This result is consistent, as higher speed implies faster data transmission.<br><br>
+            <b>Optimal Time: </b>
+            For this radio antenna, the optimal time is 23 seconds with a transmission speed of 1000 kbps. This choice minimizes data loss.<br><br>
+            <img src="{{ url_for('static', filename='IMAGE/Table_Transmission_Time_23Mb.png') }}" alt="Table_Transmission_Time_23Mb.png" title="Table of the transmission time of a 23Mbits packet of a CubeSat"><br><br>
+          <b>b) Study of data transfer between a CubeSat and the ground station</b><br><br>
+            <b>1. Purpose of the Study: </b>
+            Analyze the propagation time and the transfer time according to the distance between a CubeSat and a ground station.<br><br>
+            <b>2. Data Required for the Table: </b>
+            <ul>
+              <li>Optimal transmission time: 460 s</li>
+              <li>Propagation speed of a radio wave (close to that of light): 300,000 Km/s</li>
+            </ul>
+            <b>3. Formulas Used: </b>
+            <ul>
+              <li>Tp = d / v, with Tp: propagation time (s), d: distance (km) and v: propagation speed (km/s).</li>
+              <li>Total emission time (Te): Te = Tp + transmission time (Tt), with Te: total emission time (s), Tp: propagation time (s), Tt: transfer time (s).</li>
+            </ul>
+            <b>4. Data Transfer Time Table: </b>
+            The table shows that the propagation time is very small compared to the transmission time. This confirms the observations made during the data transfer study between two CubeSats.<br><br>
+            <b>5. Simplification: </b>
+            Therefore, it can be simplified by stating that the total time for transmitting data is equal to the transmission time, i.e., 460 seconds.<br><br>
+            <img src="{{ url_for('static', filename='IMAGE/Table_CubeSat_ground_station.png') }}" alt="Table_CubeSat_ground_station.png" title="Table of data transfer time according to the distance between a CubeSat and a ground station"><br><br>
+          <b><u>c) Study of the number of packets that can be sent to the ground station, during the time allowed by the transmission window of a satellite in LEO orbit</u></b><br><br>
+            <b>1. Definition of the Transmission Window: </b>
+            In astronautics, the transmission window represents a time interval where the optimal conditions are met for the transmission of data between a satellite and a ground station. This is due to the fact that the satellite travels through its orbit faster than the Earth’s rotation on itself.<br><br>
+            <b>2. Analysis of the Number of Packets Transmitted: </b>
+            <ul>
+              <li>The table shows the number of packets that the CubeSat can transmit to the ground station as a function of time (in minutes).</li>
+              <li>The data used for this calculation include packet weight (23 Mbits), optimal CubeSat antenna transfer rate (1 Mbps), packet transmission time (23 s), and packet transfer time (460 s).</li>
+              <li>It is shown that for a 10-minute transmission window, the CubeSat can send at least 26 packets of 23 Mbit size.</li>
+            </ul>
+            <img src="{{ url_for('static', filename='IMAGE/Packets_During_10min.png') }}" alt="Packets_During_10min.png" title="Table of the number of packets sent during a 10 min transmission window"><br><br>
+        <b><u>D/ Calculation of the maximum distance between two CubeSats</u></b><br><br>
+            <b>1. Maximum Distance Constraint: </b>
+            In a satellite network, it is crucial that CubeSats follow each other at a maximum distance to ensure uninterrupted communication.<br><br>
+            <b>2. Calculation of the Maximum Distance: </b>
+            <ul>
+            <li>CubeSats travel speed relative to Earth is 7.4 km/s.</li>
+            <li>A transmission window lasts 10 minutes.</li>
+            <li>Using the formula: Distance(km) = Speed(km/s) x Time(s), it is calculated that the maximum distance between each CubeSat must be 4440 km to ensure continuous data transmission.</li>
+          </ul>
+        <b><u>E/ Calculation of the time of a cycle of sending an image between CubeSats then between a CubeSat and the ground station</u></b><br><br>
+          <b>a) Calculation of the transfer time of an image in the CubeSats network</b><br><br>
+            <b> 1. Calculation assumptions: </b>
+            <ul>
+              <li>Your satellite network consists of 6 CubeSats that follow each other in orbit.</li>
+              <li>  You simplify the calculations by considering that the orbit of the satellites and the Earth is perfectly round.</li>
+              <li>  For the purposes of these calculations, you assume that the last satellite takes a picture.</li>
+            </ul>
+            <b> 2. Image Transfer Time: </b>
+            <ul>
+              <li>  The weight of a data package is 23 Mbits.</li>
+              <li>  The transfer time of a packet between CubeSats or to the ground station is 460 seconds.</li>
+              <li>  The total data transmission time is equal to the transfer time, as the propagation time is negligible.</li>
+            </ul>
+            <b> 3. Data Transfer Protocol: </b>
+            <ul>
+              <li>  The last satellite takes a picture and divides it into 6 identical data packets (maximum 23 Mbits per packet).</li>
+              <li>  Each satellite transmits the packets to the preceding satellite, retaining one.</li>
+              <li> This process repeats until the first satellite, which receives a data packet from the previous satellite.</li>
+            </ul>
+            <b> 4. Results: </b>
+            <ul>
+              <li>  The hyperspectral image, divided into 6 packets, is equivalent to the transfer of 15 packets (5+4+3+2+1).</li>
+              <li>  Each packet is transmitted in 460 seconds. The total time to distribute the packets is 1 hour and 55 minutes (6900 seconds/ 3600 seconds).</li>
+              <li>  The transfer time of the 6 packets to the ground station, when the satellites can transmit continuously, is 60 minutes.</li>
+            </ul>
+          <img src="{{ url_for('static', filename='IMAGE/Packet_6_CubeSats.png') }}" alt="Packet_6_CubeSats.png" title="Packet transfer table between the 6 CubeSats"><br><br>
+        <b>b) Calculation of the transfer time of a photo by the CubeSat to the ground station </b><br><br>
+          For this calculation, I will use two scenarios. They correspond to the maximum and minimum time required to transfer a photo to the ground station.<br>
+          To simplify the calculations, I assume that a satellite cannot transmit data to the ground station until the first satellite has received its data packet.<br><br>
+          <center><b>**Scenario 1: Most favourable situation**</b></center><br><br>
+          <center><img src="{{ url_for('static', filename='IMAGE/Schematic_Scenario_n1.png') }}" alt="Schematic_Scenario_n1.png" title="Schematic of data packet transfer in scenario n°1"></center><br><br>
+          The 6 satellites have time to receive their package in 1 hour and 55 minutes. The first satellite enters the transmission window when it has just received its packet. It has time to transmit its packet to the ground station, because the transmission of a packet takes 7 minutes and to browse the transmission window it takes 10 minutes.<br>
+          The other 5 satellites follow each other by 10 minutes in 10 minutes. So they each have time to transmit their package, which takes another 50 minutes.<br>
+          The total time for this scenario is therefore 1 hour and 55 minutes of transfer between satellites + 60 minutes for transfer to the ground, a total of 2 hours and 55 minutes.<br><br>
+          <center><b>**Scenario 2: Worst case scenario**</b></center><br><br>
+          <center><img src="{{ url_for('static', filename='IMAGE/Schematic_Scenario_n2.png') }}" alt="Schematic_Scenario_n1.png" title="Schematic of data packet transfer in scenario n°2"></center><br><br>
+          In this scenario, the first satellite leaves the transmission window before receiving its data packet. It is therefore necessary to wait for it to complete its orbit until it has entered the transmission window again. This journey takes 1 hour and 20 minutes.<br>
+          Once the first satellite returns to the transmission window, it can transmit its packet to the ground station, which takes 10 minutes. The other five satellites follow each other by 10 minutes in 10 minutes, so they each have time to transmit their packet, which takes 50 minutes more.<br>
+          The total time for this scenario is therefore 1 hour and 55 minutes of transfer between satellites + 1 hour and 20 minutes for the first satellite to return to the transmission window + 60 minutes for transfer to the ground, a total of 4 hours and 15 minutes.<br><br>
+          For more details and information on the calculations, click on the pdf link "Calculation of the transfer time of a photo by the CubeSat to the ground station":
+          <a href="{{ url_for('static', filename='IMAGE/Transfer_Photo_CubeSat_Ground_station.pdf') }}">Calculation of the transfer time of a photo by the CubeSat to the ground station</a>.
+        
+          </p>
+          <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+            Data transfer tests
+          </h3>
+          <p>
+            Before doing the tests I specify that the network of CubeSats communicates in Wi-Fi. Communication between the CubeSats and the ground station is via the radio antenna.<br><br>
+            <img src="{{ url_for('static', filename='IMAGE/Network.png') }}" alt="Network.png" title="Topology diagram that represents a network of CubeSats and the ground station that communicate with each other"><br><br>
+            <b><u>A/ Test sending data between CubeSat</u></b><br><br>
+            <b>1. Objective: </b>
+            The objective of this test was to check the data transfer time between two Raspberry Pi Zero, using the Wi-Fi protocol.<br><br>
+            <b>2. Method: </b><br>
+            The test was carried out in three stages:<br>
+            <ul>
+            <li>Setting up a Wi-Fi access point on a Raspberry Pi Zero.</li>
+            <li>Connecting a second Raspberry Pi Zero to the access point.</li>
+            <li>Data transfer test between the two Raspberry Pi Zero.</li>
+          </ul>
+            <b>3. Results: </b>
+            This test confirmed that the two Raspberry Pi Zéro could communicate with each other via Wi-Fi.
+            But this test showed that the size of a data packet was limited to 65536 bytes. This means that a 23 Mbit packet (2,875,000 bytes) cannot be sent at once.<br><br>
+            <b>4. Conclusion: </b>
+            The test revealed a limitation of the Raspberry Pi Zero in terms of data packet size. This limitation can impact applications that require the transfer of large amounts of data.<br><br>
+            <b>5. Recommendations: </b>
+            To overcome this limitation, it is possible to split data packets into smaller pieces. This makes it possible to reduce the size of a single packet and transmit it in several times.<br><br>
+            For more details and information on the calculations, click on the pdf link "Test sending data between CubeSatn":
+            <a href="{{ url_for('static', filename='IMAGE/Test_Sending.pdf') }}">Test sending data between CubeSat</a>.<br><br>
+            <b><u>B/ Test of data transmission between CubeSat and ground receiving station  </u></b><br><br>
+            In the previous sections, I found that the propagation time is negligible. Therefore, it does not affect the total data transfer time. Since the propagation time is directly proportional to the distance, I have concluded that it is not necessary to take into account the distance between the CubeSats or the distance between the CubeSat and the ground station.<br>
+            Now, I will check the ability of Low Orbit Satellites (LEO) to transmit a 23Mb data packet during the 10-minute transmission window.<br>
+  
+            For this I use the FoxTelem software, because it allows me to see the number of packets that is transmitted to the ground station. On the software this measure has the name “frame”.<br>
+  
+            And in the “main. c” program I use the “transmit” function to send a data set.<br><br>
+           
+           <b><u>C/ Test to send an image</u></b><br><br>
+  
+            For this test, I must:<br>
+            <ul>
+              <li>Create a network with 6 Raspberry Pi Zero, which simulates the 6 CubeSat, and a ground station. The ground station is simulated by a Raspberry Pi 3B to which I added an RTL-SDR antenna.</li>
+              <li>Transmit packets between the CubeSats and the ground station, in order to measure the real time this transmission takes.</li>
+              <li>Compare these experimental measurements of transmission time with the results of my calculations.</li>
+          </ul>
+            At the time of writing this report, the last two tests (B and C) could not be done because the task schedule imposed other priorities on me.<br>
+            I’ll try to do them in the time I have left.<br>      
+          </p>
+      </div>
+
+      <h3 class="w3-border-bottom w3-border-light-black w3-padding-16"   id="about"></h3>
+
+      <div class="w3-row-padding w3-grayscale">
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <a href="https://www.linkedin.com/in/amélie-castellano-205099255/">
+            <img
+              src="{{ url_for('static', filename='IMAGE/Amelie_Img_2.jpg') }}"
+              alt="House"
+              style="width: 100%"
+            />
+          </a>
+        </div>
+        <div class="w3-col l9 m6 w3-margin-bottom">
+          <h3 texte-color : #fff>Amélie Castellano</h3>
+          <p class="w3-opacity">Intern ESEO 2023</p>
+          <div class="w3-col l20 m20 w3-margin-bottom">
+            <p>
+              A French student completing her 3rd-year internship at Nimbus for a
+              duration of 4 months as part of her engineering studies, with a
+              specialization in embedded systems programming. Amélie's
+              engineering school is located in Angers, France.<br>  
+            </p>
+          <p>
+            Amélie has already completed a project in electronics and computer science. In 2022, it carried out 
+            a project to create a product expiry alert system. This project allowed him to develop his skills in welding and programming.
+          </p>
+          <p>
+            Amélie’s skills make her particularly well qualified to carry out the cubesat network project.
+          </p>
+          
+      </div>
+          <p>
+            <a href="mailto:amelie.castellano@mycit.ie?subject=Question%20Cubesat">
+              <button class="w3-button w3-light-grey w3-block">Contact</button>
+            </a>
+          </p>
+
+        </div>
+        
+      </div>
+
+      <h3 class="w3-border-bottom w3-border-light-black w3-padding-16"></h3>
+
+      <!-- Contact Section -->
+      <div class="w3-container w3-padding-32" id="contact">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+            Some Links
+        </h3>
+        <p>Different sources to better understand the project as a whole.</p>
+        
+        <div class="links">
+            <div class="link-item">
+              <a href="https://en.wikipedia.org/wiki/Reaction_wheel" target="_blank">
+                <img src="{{ url_for('static', filename='IMAGE/Wikipedia-Logo.png') }}" alt="Yann" style="width: 100%" />
+            </a>
+            </div>
+            <div class="link-item">
+              <a
+                href="/Youtube_Link_WIFI"
+                target="_blank"
+                ><img src="{{ url_for('static', filename='IMAGE/Youtube-logo-png.png') }}" alt="Yann" style="width: 100%" /></a
+              >
+            </div>
+            <div class="link-item">
+              <a
+                href="/Project_Link_WIFI"
+                target="_blank"
+                ><img src="{{ url_for('static', filename='IMAGE/project.png') }}" alt="Yann" style="width: 100%" /></a
+              >
+            </div>
+            <div class="link-item">
+              <a href="https://github.com/alanbjohnston" target="_blank"
+                ><img src="{{ url_for('static', filename='IMAGE/GitHub-Logo.png') }}" alt="Yann" style="width: 100%" /></a
+              >
+            </div>
+          </div>
+
+          <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"></h3>
+
+      <!-- Image of location/map -->
+      <div class="w3-container">
+        <a href="https://eseo.fr/je-m-oriente/mon-campus/angers/" target="_blank">
+        <img
+          src="{{ url_for('static', filename='IMAGE/eseo.jpg') }}"
+          class="w3-image"
+          style="width: 100%"
+        />
+        </a>
+      </div>
+
+      <!-- End page content -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-center w3-black w3-padding-16">
+      <p>
+        Powered by
+        <a
+          href="https://nimbusgateway.ie/"
+          title="Nimbus Gateway"
+          target="_blank"
+          class="w3-hover-text-green"
+          >Nimbus</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>
