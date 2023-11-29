@@ -178,7 +178,7 @@
         <img src="{{ url_for('static', filename='IMAGE/reaction_expli.jpg') }}" alt="House" style="width: 49%"/>
         </p>
         <p>
-          We will see later in this page that this choice is not made randomly and that this method offers specific advantages in our situation.
+          We didn't emphasize it, but the goal is to set up an experimental prototype that allows a real visualization of the impact of reaction wheels on the behavior of a CubeSat.
         </p>
         <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
           Integration of Reaction Wheels into a CubeSat : 
@@ -186,11 +186,19 @@
         <p>
           The mechanical design: So, we have chosen to integrate a total of 2 reaction wheels. This way, we have the ability to rotate on all 3 axes, even though it requires a sequencing that would not have been necessary with 3 wheels. (Indeed, to reach certain positions, we will need to activate the X-axis wheel separately from the Y-axis wheel). Therefore, we have already started to think about how to optimize the integration of the wheels into the 10cm x 10cm CubeSat. This visualization was necessary and possible through the use of SolidWorks software, which we will subsequently use to 3D-print the various support pieces.
         </p>
+        <p>
+          The first two images we see are the initial versions, and the video clearly shows the final rendering with rotations on the X-axis and Z-axis at the end, in cases where the wheels turn one after the other.
+        </p>
           <p>
           <img src="{{ url_for('static', filename='IMAGE/solidwork.jpg') }}" alt="House" style="width: 34%"/>
           <img src="{{ url_for('static', filename='IMAGE/solidwork2.jpg') }}" alt="House" style="width: 38%"/>
           <img src="{{ url_for('static', filename='IMAGE/Solidwork_fin2.jpg') }}" alt="House" style="width: 27%"/>
           </p>
+
+          <video controls style="border: 2px solid rgb(185, 183, 183);" width="100%">
+            <source src="{{ url_for('static', filename='IMAGE/Assemblage4.mp4') }}" type="video/mp4"  >
+          </video>
+          
         <p>
           Control Systems: In our basic CubeSat, we utilize an Arduino SparkFun Pro Micro board, which comes equipped with both analog and digital pins. To directly control the motor speed, all we need to do is add a "speed control" device like an "ESC_Speed_Control" and utilize one of the pins to send a PWM signal from the SparkFun. Therefore, our setup would consist of 2 DC motors, 2 speed controllers, an Arduino SparkFun board, a battery, and our gyroscope sensor.
         </p>
@@ -209,6 +217,58 @@
         <p>
           Power Supply: In our case, the reaction wheels will be powered by a battery, which is autonomous because it is connected to all the solar panels.
         </p>
+
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          Our prototype :
+        </h3>
+        <p>
+          So we designed our prototype after 3D printing the necessary parts. For this, as previously mentioned, we used the SparkFun Arduino. However, the idea of using the ESC speed controller was changed as we didn't have it in our possession. So initially, we used the DRV8838, which allows exactly the same functionality but only with a single motor. However, using two, we eventually opted to use the L293D.
+        </p>
+        <p>
+          It allows controlling the two directions for both motors. However, a problem arose: it doesn't allow PWM control as easily. For our initial prototype, we decided that this could be improved in the future, giving us a chance to conduct tests with the remaining time. (After thorough research, we finally understood how to integrate PWM with the enable pins.)
+        </p>
+        <p>
+          The first video shows the initial tests with the DRV8838 on one motor, while the photo depicts the L293D that we are currently using along with its internal schematic. 
+        </p>
+
+        <div class="container2">
+          <div class="third">
+            <div class="video-container">
+              <video controls width="40%" height="100%">
+                  <source src="{{ url_for('static', filename='IMAGE/PROTO.mp4') }}" type="video/mp4">
+              </video>
+            </div> 
+          </div>
+          <div class="third">
+            <img src="{{ url_for('static', filename='IMAGE/L293D-Driver.jpg') }}" alt="House" style="width: 100%"/>
+          </div>
+          <div class="third">
+            <img src="{{ url_for('static', filename='IMAGE/L293D.JPG') }}" alt="House" style="width: 70%"/>
+          </div>
+        </div>
+
+        <p>
+          During the last week, we had just enough time to develop a prototype of our Reaction Wheel control board on a veroboard. This way, we have a fairly lightweight and discreet prototype that we will integrate into a casing.
+        </p>
+        <p>
+          Since we didn’t have an on/off button, we placed a jumper to close the circuit and power it up. All of this is powered by a 7.2V motor battery and stepped down to 5V for the SparkFun Pro Micro.
+        </p>
+
+        <center><img src="{{ url_for('static', filename='IMAGE/Prototype_RW.png') }}" alt="House" style="width: 60%"/></center>
+
+
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+          PCB Creation on Kicad :
+        </h3>
+        <p>
+          We also took the time to create a PCB with our initial version of functional code (we did not implement changes in the case where we introduce PWM with the L239D in this version).
+        </p>
+        <p>
+          <img src="{{ url_for('static', filename='IMAGE/Schematic_RW.PNG') }}" alt="House" style="width: 43%"/>
+          <img src="{{ url_for('static', filename='IMAGE/PCB_RW.PNG') }}" alt="House" style="width: 26.5%"/>
+          <img src="{{ url_for('static', filename='IMAGE/Visu_3D.PNG') }}" alt="House" style="width: 25.3%"/>
+        </p>
+
         <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
           Demonstrate proper functioning :
         </h3>
@@ -224,6 +284,7 @@
         <p>
           3. The final method is an air-bearing system, which suspends a sphere containing the CubeSat in a "levitating" fashion through air propulsion from a support. This allows for 360-degree freedom of rotation in all directions. However, the latter method appears to be somewhat complex to set up.
         </p>
+
         <div class="imag_center">
           <a href="https://www.youtube.com/watch?v=zkB3eqjh_mk&t=190s">
           <img src="{{ url_for('static', filename='IMAGE/fil.jpg') }}" alt="House" style="width: 26%; margin-right: 20px;"/>
@@ -318,7 +379,7 @@
               >
             </div>
             <div class="link-item">
-              <a href="https://github.com/alanbjohnston" target="_blank"
+              <a href="https://github.com/Yannouille29/CubeSat_MTU.git" target="_blank"
                 ><img src="{{ url_for('static', filename='IMAGE/GitHub-Logo.png') }}" alt="Yann" style="width: 100%" /></a
               >
             </div>
