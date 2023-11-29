@@ -1,0 +1,16 @@
+{
+  "type": "module",
+  "devDependencies": {
+    "@types/three": "^0.158.1",
+    "vite": "^4.5.0"
+  },
+  "scripts": {
+    "dev": "vite"
+  },
+  "dependencies": {
+    "gltfloader": "github:codeurdenuit/GLTFLoader",
+    "gsap": "^3.12.2",
+    "three": "^0.158.0",
+    "three-stl-loader": "^1.0.6"
+  }
+}
