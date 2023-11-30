@@ -4,20 +4,20 @@ import java.io.IOException;
 
 Serial myPort;
 String data = "";
-float roll = 0, pitch = 0, yaw = 0; // Initialisation à zéro
+float roll = 0, pitch = 0, yaw = 0; // Initialize to zero
 
-color[] faceColors; // Tableau de couleurs pour chaque face du cube
+color[] faceColors; // Array of colors for each face of the cube
 
 void setup() {
   size(800, 800, P3D);
-  myPort = new Serial(this, "COM3", 19200); // Démarre la communication série
+  myPort = new Serial(this, "COM3", 19200); // Start serial communication
   myPort.bufferUntil('\n');
 
   faceColors = new color[6];
-  faceColors[0] = color(255, 0, 0);    // Rouge
-  faceColors[1] = color(0, 255, 0);    // Vert
-  faceColors[2] = color(0, 0, 255);    // Bleu
-  faceColors[3] = color(255, 255, 0);  // Jaune
+  faceColors[0] = color(255, 0, 0);    // Red
+  faceColors[1] = color(0, 255, 0);    // Green
+  faceColors[2] = color(0, 0, 255);    // Blue
+  faceColors[3] = color(255, 255, 0);  // Yellow
   faceColors[4] = color(0, 255, 255);  // Cyan
   faceColors[5] = color(255, 0, 255);  // Magenta
 }
@@ -26,15 +26,15 @@ void draw() {
   background(300);
   translate(width / 2, height / 2, 0);
 
-  // Appliquer les rotations basées sur les données de cap
+  // Apply rotations based on pitch, roll, and yaw data
   rotateX(radians(-pitch));
   rotateZ(radians(roll));
   rotateY(radians(yaw));
 
-  // Afficher le cube avec des faces de couleurs différentes
+  // Display the cube with different colored faces
   drawColoredCube();
 
-  // Afficher le texte
+  // Display text
   fill(255);
   textSize(30);
   scale(-1, 1, 1);
@@ -44,64 +44,70 @@ void draw() {
 void drawColoredCube() {
   float size = 250;
 
+  // Face 1: Front (Red)
   beginShape();
-  fill(faceColors[0]);
+  fill(faceColors[0]); // Set fill color to the first color in the faceColors array (Red)
   vertex(-size/2, -size/2, -size/2);
-  vertex( size/2, -size/2, -size/2);
-  vertex( size/2,  size/2, -size/2);
-  vertex(-size/2,  size/2, -size/2);
+  vertex(size/2, -size/2, -size/2);
+  vertex(size/2, size/2, -size/2);
+  vertex(-size/2, size/2, -size/2);
   endShape(CLOSE);
 
+  // Face 2: Right (Green)
   beginShape();
-  fill(faceColors[1]);
-  vertex( size/2, -size/2, -size/2);
-  vertex( size/2, -size/2,  size/2);
-  vertex( size/2,  size/2,  size/2);
-  vertex( size/2,  size/2, -size/2);
+  fill(faceColors[1]); // Set fill color to the second color in the faceColors array (Green)
+  vertex(size/2, -size/2, -size/2);
+  vertex(size/2, -size/2, size/2);
+  vertex(size/2, size/2, size/2);
+  vertex(size/2, size/2, -size/2);
   endShape(CLOSE);
 
+  // Face 3: Back (Blue)
   beginShape();
-  fill(faceColors[2]);
-  vertex( size/2, -size/2,  size/2);
-  vertex(-size/2, -size/2,  size/2);
-  vertex(-size/2,  size/2,  size/2);
-  vertex( size/2,  size/2,  size/2);
+  fill(faceColors[2]); // Set fill color to the third color in the faceColors array (Blue)
+  vertex(size/2, -size/2, size/2);
+  vertex(-size/2, -size/2, size/2);
+  vertex(-size/2, size/2, size/2);
+  vertex(size/2, size/2, size/2);
   endShape(CLOSE);
 
+  // Face 4: Left (Yellow)
   beginShape();
-  fill(faceColors[3]);
-  vertex(-size/2, -size/2,  size/2);
+  fill(faceColors[3]); // Set fill color to the fourth color in the faceColors array (Yellow)
+  vertex(-size/2, -size/2, size/2);
   vertex(-size/2, -size/2, -size/2);
-  vertex(-size/2,  size/2, -size/2);
-  vertex(-size/2,  size/2,  size/2);
+  vertex(-size/2, size/2, -size/2);
+  vertex(-size/2, size/2, size/2);
   endShape(CLOSE);
 
+  // Face 5: Top (Cyan)
   beginShape();
-  fill(faceColors[4]);
+  fill(faceColors[4]); // Set fill color to the fifth color in the faceColors array (Cyan)
   vertex(-size/2, -size/2, -size/2);
-  vertex( size/2, -size/2, -size/2);
-  vertex( size/2, -size/2,  size/2);
-  vertex(-size/2, -size/2,  size/2);
+  vertex(size/2, -size/2, -size/2);
+  vertex(size/2, -size/2, size/2);
+  vertex(-size/2, -size/2, size/2);
   endShape(CLOSE);
 
+  // Face 6: Bottom (Magenta)
   beginShape();
-  fill(faceColors[5]);
-  vertex(-size/2,  size/2, -size/2);
-  vertex( size/2,  size/2, -size/2);
-  vertex( size/2,  size/2,  size/2);
-  vertex(-size/2,  size/2,  size/2);
+  fill(faceColors[5]); // Set fill color to the sixth color in the faceColors array (Magenta)
+  vertex(-size/2, size/2, -size/2);
+  vertex(size/2, size/2, -size/2);
+  vertex(size/2, size/2, size/2);
+  vertex(-size/2, size/2, size/2);
   endShape(CLOSE);
 }
 
 void serialEvent(Serial myPort) {
-  data = myPort.readStringUntil('\n');
+  data = myPort.readStringUntil('\n'); // Read data from the serial port until newline
   if (data != null) {
-    data = trim(data);
-    String items[] = split(data, '/');
-    if (items.length > 1) {
-      roll = float(items[0]);
-      pitch = float(items[1]);
-      yaw = float(items[2]);
+    data = trim(data); // Remove leading/trailing whitespace
+    String items[] = split(data, '/'); // Split the received data by '/'
+    if (items.length > 2) { // Check if the data contains at least three values
+      roll = float(items[0]); // Convert the first value to float and assign it to roll
+      pitch = float(items[1]); // Convert the second value to float and assign it to pitch
+      yaw = float(items[2]); // Convert the third value to float and assign it to yaw
     }
   }
 }
