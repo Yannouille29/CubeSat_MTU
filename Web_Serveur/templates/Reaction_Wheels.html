@@ -298,10 +298,33 @@
         </div>
 
         <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"   id="about">
+          Final prototype :
+        </h3>
+
+        <p>
+          We have thus managed to set up a functional but improvable final prototype. The video below demonstrates the prototype using the code that does not yet employ PWM (Pulse Width Modulation). However, a specific Arduino code has been placed on GitHub, enhancing the prototype's functionality in case we gain access to PWM.
+        </p>
+
+        <div class="container1">
+        <video controls width="33%" height="100%">
+          <source src="{{ url_for('static', filename='IMAGE/Cubesat_Scene_1.mp4') }}" type="video/mp4">
+        </video>
+        <video controls width="33%" height="100%">
+          <source src="{{ url_for('static', filename='IMAGE/Cubesat_Scene_2.mp4') }}" type="video/mp4">
+        </video>
+        <video controls width="33%" height="100%">
+          <source src="{{ url_for('static', filename='IMAGE/Cubesat_Scene_3.mp4') }}" type="video/mp4">
+        </video>
+        </div>
+        
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"   id="about">
           Conclusion :
         </h3>
         <p>
-          The addition of two reaction wheels to a CubeSat represents a significant technological advancement that greatly enhances its ability to control its orientation in space. This opens up new possibilities for cost-effective space missions and scientific research. Through this implementation, CubeSats can achieve new levels of precision and efficiency in their operations. 
+          Regarding our project, we have completed a functional version that includes a visualization of the effects of using reaction wheels. Naturally, the project is intended to be improved in several ways. This includes the development of the PCB and its cleaner integration into the overall structure, optimizing precision, implementing a system with passive components to deliver enough current for motor start-up peaks, thus avoiding constant operation at 7 volts.
+        </p>
+        <p>
+          Additionally, we are considering creating a 2-unit CubeSat, where one unit would be traditional, and the second would comprise reaction wheels. This configuration is entirely feasible and relatively straightforward since the SparkFun code is similar in some aspects, except for motor control changes, and there is available space on the sensor board.
         </p>
       </div>
 
