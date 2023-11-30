@@ -186,11 +186,19 @@
         <p>
           The mechanical design: So, we have chosen to integrate a total of 2 reaction wheels. This way, we have the ability to rotate on all 3 axes, even though it requires a sequencing that would not have been necessary with 3 wheels. (Indeed, to reach certain positions, we will need to activate the X-axis wheel separately from the Y-axis wheel). Therefore, we have already started to think about how to optimize the integration of the wheels into the 10cm x 10cm CubeSat. This visualization was necessary and possible through the use of SolidWorks software, which we will subsequently use to 3D-print the various support pieces.
         </p>
+        <p>
+          The first two images we see are the initial versions, and the video clearly shows the final rendering with rotations on the X-axis and Z-axis at the end, in cases where the wheels turn one after the other.
+        </p>
           <p>
           <img src="{{ url_for('static', filename='IMAGE/solidwork.jpg') }}" alt="House" style="width: 34%"/>
           <img src="{{ url_for('static', filename='IMAGE/solidwork2.jpg') }}" alt="House" style="width: 38%"/>
           <img src="{{ url_for('static', filename='IMAGE/Solidwork_fin2.jpg') }}" alt="House" style="width: 27%"/>
           </p>
+
+          <video controls style="border: 2px solid rgb(185, 183, 183);" width="100%">
+            <source src="{{ url_for('static', filename='IMAGE/Assemblage4.mp4') }}" type="video/mp4"  >
+          </video>
+          
         <p>
           Control Systems: In our basic CubeSat, we utilize an Arduino SparkFun Pro Micro board, which comes equipped with both analog and digital pins. To directly control the motor speed, all we need to do is add a "speed control" device like an "ESC_Speed_Control" and utilize one of the pins to send a PWM signal from the SparkFun. Therefore, our setup would consist of 2 DC motors, 2 speed controllers, an Arduino SparkFun board, a battery, and our gyroscope sensor.
         </p>
@@ -276,6 +284,7 @@
         <p>
           3. The final method is an air-bearing system, which suspends a sphere containing the CubeSat in a "levitating" fashion through air propulsion from a support. This allows for 360-degree freedom of rotation in all directions. However, the latter method appears to be somewhat complex to set up.
         </p>
+
         <div class="imag_center">
           <a href="https://www.youtube.com/watch?v=zkB3eqjh_mk&t=190s">
           <img src="{{ url_for('static', filename='IMAGE/fil.jpg') }}" alt="House" style="width: 26%; margin-right: 20px;"/>
@@ -289,10 +298,33 @@
         </div>
 
         <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"   id="about">
+          Final prototype :
+        </h3>
+
+        <p>
+          We have thus managed to set up a functional but improvable final prototype. The video below demonstrates the prototype using the code that does not yet employ PWM (Pulse Width Modulation). However, a specific Arduino code has been placed on GitHub, enhancing the prototype's functionality in case we gain access to PWM.
+        </p>
+
+        <div class="container1">
+        <video controls width="33%" height="100%">
+          <source src="{{ url_for('static', filename='IMAGE/Cubesat_Scene_1.mp4') }}" type="video/mp4">
+        </video>
+        <video controls width="33%" height="100%">
+          <source src="{{ url_for('static', filename='IMAGE/Cubesat_Scene_2.mp4') }}" type="video/mp4">
+        </video>
+        <video controls width="33%" height="100%">
+          <source src="{{ url_for('static', filename='IMAGE/Cubesat_Scene_3.mp4') }}" type="video/mp4">
+        </video>
+        </div>
+        
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"   id="about">
           Conclusion :
         </h3>
         <p>
-          The addition of two reaction wheels to a CubeSat represents a significant technological advancement that greatly enhances its ability to control its orientation in space. This opens up new possibilities for cost-effective space missions and scientific research. Through this implementation, CubeSats can achieve new levels of precision and efficiency in their operations. 
+          Regarding our project, we have completed a functional version that includes a visualization of the effects of using reaction wheels. Naturally, the project is intended to be improved in several ways. This includes the development of the PCB and its cleaner integration into the overall structure, optimizing precision, implementing a system with passive components to deliver enough current for motor start-up peaks, thus avoiding constant operation at 7 volts.
+        </p>
+        <p>
+          Additionally, we are considering creating a 2-unit CubeSat, where one unit would be traditional, and the second would comprise reaction wheels. This configuration is entirely feasible and relatively straightforward since the SparkFun code is similar in some aspects, except for motor control changes, and there is available space on the sensor board.
         </p>
       </div>
 
