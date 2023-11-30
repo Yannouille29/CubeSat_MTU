@@ -1,31 +1,35 @@
+# This script is intended to be launched via a service on the Raspberry Pi, serving as a ground station.
+
 import socket
 import time
 import logging
 
-logging.basicConfig(filename='sender.log', level=logging.INFO, format='%(asctime)s - %(message)s')
+logging.basicConfig(filename='/home/pi/CubeSatSim/sender2.log', level=logging.INFO, format='%(asctime)s - %(message)s')
 
-# Configuration de l'adresse IP et du port du PC
-pc_ip = '192.168.56.1'
-pc_port = 12345
-previous_line = ""
+# Configuration of Flask server IP address and port
+server_ip = '192.168.163.134'  # Replace this with your wifi server's IP address
+server_port = 8080
 
-# Emplacement du fichier .log
-log_file = 'test.log'
+# Location of the .log file
+log_file = '/home/pi/FoxTelemetryData-CubeSatSim/FOXDB/FOX7rttelemetry_49_76.log' # Adjust this for the new payload file
 
-# Créer une socket pour la communication
+# Create a socket for communication
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+previous_line = ""
 
 while True:
     with open(log_file, 'r') as f:
         lines = f.readlines()
     
-    # Obtenir la dernière ligne du fichier
+    # Get the last line of the file
     last_line = lines[-1].strip()
+    
+    # Check if the line has changed to avoid sending duplicates
     if previous_line != last_line:
-    
-        message = last_line  # Stocker la dernière ligne dans la variable message
-        s.sendto(message.encode('utf-8'), (pc_ip, pc_port))
+        # Send the last line to the Flask server
+        message = last_line
+        s.sendto(message.encode('utf-8'), (server_ip, server_port))
         logging.info(f"Sent: {message}")
-        previous_line = last_line  # Mettre à jour la ligne précédente
-    
-    time.sleep(6)  # Attendre 1 seconde avant de vérifier à nouveau le fichier
+        previous_line = last_line  # Update the previous line
+        
+    time.sleep(1)  # Wait for 1 seconds before checking the file again
