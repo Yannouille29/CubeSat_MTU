@@ -16,6 +16,8 @@ const int Mot1P = 8; // Arduino pin connected to EN1 of L298N
 const int Mot1M = 9; // Arduino pin connected to ENA of L298N
 const int Mot2P = 7; // Arduino pin connected to EN1 of L298N
 const int Mot2M = 6; // Arduino pin connected to ENA of L298N
+const int Ena1 = 10;
+const int Ena2 = 5;
 
 const int MPU = 0x68; // MPU6050 I2C address
 float AccX, AccY, AccZ;
@@ -47,6 +49,9 @@ void setup() {
   pinMode(Mot1M, OUTPUT);
   pinMode(Mot2P, OUTPUT);
   pinMode(Mot2M, OUTPUT);
+  pinMode(Ena1, OUTPUT);
+  pinMode(Ena2, OUTPUT);
+
 
   Wire.begin();                      // Initialize communication
   Wire.beginTransmission(MPU);       // Start communication with MPU6050 // MPU=0x68
@@ -146,27 +151,41 @@ Serial.println(yaw);
 if (roll < -10) {
   digitalWrite(Mot2P, HIGH);
   digitalWrite(Mot2M, LOW);
+  analogWrite(Ena1, 255);
+  analogWrite(Ena2, 255);
+  
 } else if (roll > 10) {
   digitalWrite(Mot2P, LOW);
   digitalWrite(Mot2M, HIGH);
+  analogWrite(Ena1, 255);
+  analogWrite(Ena2, 255);
+  
 } else if (roll > -10 && roll < 10) {
   digitalWrite(Mot2P, LOW);
   digitalWrite(Mot2M, LOW);
+  analogWrite(Ena1, 255);
+  analogWrite(Ena2, 255);
 }
 
 //----- Control Motor 1 based on yaw angle ----//
 if (yaw < -10) {
   digitalWrite(Mot1P, HIGH);
   digitalWrite(Mot1M, LOW);
+  analogWrite(Ena1, 255);
+  analogWrite(Ena2, 255);
+  
 } else if (yaw > 10) {
   digitalWrite(Mot1P, LOW);
   digitalWrite(Mot1M, HIGH);
+  analogWrite(Ena1, 255);
+  analogWrite(Ena2, 255);
+  
 } else if (yaw > -10 && yaw < 10) {
   digitalWrite(Mot1P, LOW);
   digitalWrite(Mot1M, LOW);
 }
 
-
+}
 //-----------------------calculate_IMU_error for 3D----------------------------
 void calculate_IMU_error() {
   // This function calculates the accelerometer and gyro data errors.
